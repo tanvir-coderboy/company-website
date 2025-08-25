@@ -30,6 +30,10 @@ class WebsiteController extends Controller
     {
         return 'Contact';
     }
+    public function blog()
+    {
+        return 'blog';
+    }
 
 
 }
