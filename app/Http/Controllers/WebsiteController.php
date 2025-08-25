@@ -26,5 +26,10 @@ class WebsiteController extends Controller
         return view('frontend.index', compact('setting','banner','welcome','title','services','whychooses','blogs','testimonials'));
     }
 
+    public function contact()
+    {
+        return 'Contact';
+    }
+
 
 }

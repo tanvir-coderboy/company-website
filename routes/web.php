@@ -45,6 +45,7 @@ Route::get('/cmd',function(){
 
 
 Route::get('/', [WebsiteController::class, 'home'])->name('index');
+Route::get('/contact', [WebsiteController::class, 'contact'])->name('contact');
 
 
 
