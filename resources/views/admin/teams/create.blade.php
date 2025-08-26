@@ -39,7 +39,7 @@ Team Create
 
                                 <div class="col-12 p-1 mb-3">
                                     <label for="bio" class="form-label">Bio</label>
-                                    <textarea name="bio" id="bio" class="form-control  @error('bio') is-invalid @enderror" rows="4" placeholder="Enter Bio"></textarea>
+                                    <textarea name="bio" id="bio" class="form-control summernote  @error('bio') is-invalid @enderror" rows="4" placeholder="Enter Bio"></textarea>
                                     @error('bio') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
 
@@ -78,7 +78,7 @@ Team Create
 
                                 <div class="col-md-6 p-1 mb-3">
                                     <label for="image" class="form-label">Image</label>
-                                    <input type="file" name="image" id="image" class="form-control  @error('image') is-invalid @enderror">
+                                    <input type="file" name="image" id="image" class="form-control p-1  @error('image') is-invalid @enderror">
                                     @error('image') <span class="text-danger">{{ $message }}</span> @enderror
                                     <div class="mt-2">
                                         <img id="preview-image" src="" alt="Preview" width="70" height="60" style="object-fit:cover;border-radius:8px;display:none;">

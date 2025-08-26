@@ -45,8 +45,9 @@ Service Item Create
 
                                 <div class="col-6 p-1 mb-3">
                                     <label for="image" class="form-label">Image</label>
-                                    <input type="file" name="image" id="image" class="form-control p-1 @error('image') is-invalid @enderror">
+                                    <input accept="image/*" type="file" name="image" id="image" class="form-control p-1 @error('image') is-invalid @enderror">
                                     @error('image') <span class="text-danger">{{ $message }}</span> @enderror
+
                                     <div class="mt-2">
                                         <img id="preview-image" src="" alt="Preview" width="70px" height="60px"
                                             style="object-fit: cover; border-radius: 8px; display:none;">
@@ -66,7 +67,7 @@ Service Item Create
                             </div>
                         </div>
 
-                         <div class="card-footer d-flex justify-content-end">
+                        <div class="card-footer d-flex justify-content-end">
                             <button type="submit" class="btn btn-info"><i class="fa fa-save"></i> Save</button>
                         </div>
                     </div>
@@ -76,7 +77,10 @@ Service Item Create
     </div>
 </section>
 
-{{-- Preview Script --}}
+@endsection
+
+
+@section('script')
 <script>
     // Image preview
     document.getElementById("image").addEventListener("change", function(event) {
@@ -88,6 +92,5 @@ Service Item Create
         };
         reader.readAsDataURL(event.target.files[0]);
     });
-    </script>
-
-    @endsection
+</script>
+@endsection

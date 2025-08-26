@@ -66,18 +66,22 @@ Update Page
                                 @error('meta_description')<span class="text-danger">{{ $message }}</span>@enderror
                             </div>
 
-                            <div class="form-group col-lg-6 mb-3">
-                                <label for="meta_image">Meta Image</label>
-                                <input type="file" id="meta_image" name="meta_image" class="form-control">
-                                <div class="mt-2">
+                            <div class="col-6 p-1 mb-3">
+                                    <label for="meta_image" class="form-label">meta_image</label>
+                                    <input value="{{$data->meta_image}}" accept="image/*" type="file" name="meta_image" id="meta_image" class="form-control p-1 @error('meta_image') is-invalid @enderror">
+                                    @error('image') <span class="text-danger">{{ $message }}</span> @enderror
+
                                     @if($data->meta_image)
-                                    <img id="preview-meta" src="{{ Storage::url($data->meta_image) }}" alt="Meta Image" style="max-width: 100px;">
+                                    <div class="mt-2">
+                                        <img id="preview-image" src="{{Storage::url($data->meta_image)}}" alt="empty image" width="80px" height="70px">
+                                    </div>
                                     @else
-                                    <img id="preview-meta" src="" alt="Preview" style="max-width: 100px; display:none;">
+                                    <div class="mt-2">
+                                        <img id="preview-image" src="" alt="empty image" width="80px" height="70px" style="object-fit: cover; border-radius: 8px; display:none;">
+                                    </div>
                                     @endif
+
                                 </div>
-                                @error('meta_image')<span class="text-danger">{{ $message }}</span>@enderror
-                            </div>
 
                             <div class="form-group col-lg-6 mb-3">
                                 <label for="status">Status</label>
@@ -107,7 +111,7 @@ Update Page
 <script>
     // Meta Image Preview
     document.getElementById('meta_image').addEventListener('change', function(event) {
-        const preview = document.getElementById('preview-meta');
+        const preview = document.getElementById('preview-image');
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();

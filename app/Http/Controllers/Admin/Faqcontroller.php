@@ -34,28 +34,21 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-
-
-        $request->validate([
-            'category_id'      => 'required',
-            'title'            => 'required|string|max:255',
-            'description'      => 'nullable|string',
-
-            'serial'           => 'nullable|integer|min:1',
-
-            'button_name'      => 'nullable|string|max:100',
-            'button_link'      => 'nullable|url|max:255',
-            'button_type'      => 'required|in:1,2',
-            'button_status'    => 'nullable|in:1,2',
-
-            'meta_title'       => 'nullable|string|max:255',
-            'meta_description' => 'nullable|string|max:5000',
-            'meta_keyword'     => 'nullable|string|max:5000',
-            'meta_image'       => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-
-            'status'           => 'required|in:0,1',
-        ]);
+        $data = $request->only([
+        'category_id',
+        'title',
+        'description',
+        'serial',
+        'button_name',
+        'button_link',
+        'button_type',
+        'button_status',
+        'meta_title',
+        'meta_description',
+        'meta_keyword',
+        'meta_image',
+        'status'
+    ]);
 
 
 
@@ -92,34 +85,26 @@ class FaqController extends Controller
         $data = Faq::findOrFail($id);
 
 
-        $request->validate([
-            'category_id'      => 'required',
-            'title'            => 'required|string|max:255',
-            'description'      => 'nullable|string',
-
-            'serial'           => 'nullable|integer|min:1',
-
-            'button_name'      => 'nullable|string|max:100',
-            'button_link'      => 'nullable|url|max:255',
-            'button_type'      => 'required|in:1,2',
-            'button_status'    => 'nullable|in:1,2',
-
-            'meta_title'       => 'nullable|string|max:255',
-            'meta_description' => 'nullable|string|max:5000',
-            'meta_keyword'     => 'nullable|string|max:5000',
-            'meta_image'       => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-
-            'status'           => 'required|in:0,1',
-        ]);
-
-
-
         $image = $request->hasFile('meta_image') ? ImageHelper::uploadImage($request->file('meta_image')) : null;
 
         if ($request->hasFile('meta_image') && $data->meta_image) {
             Storage::disk('public')->delete($data->meta_image);
         }
-        $update = $request->all();
+        $update = $request->only([
+        'category_id',
+        'title',
+        'description',
+        'serial',
+        'button_name',
+        'button_link',
+        'button_type',
+        'button_status',
+        'meta_title',
+        'meta_description',
+        'meta_keyword',
+        'meta_image',
+        'status'
+    ]);
 
         if ($image) {
             $update['meta_image'] = $image;
@@ -140,5 +125,26 @@ class FaqController extends Controller
         }
         $data->delete();
         return redirect()->back()->with('success', 'Data Deleted Successfully');
+    }
+
+
+    public function updateStatus(Request $request)
+    {
+        $item = Faq::findOrFail($request->id);
+        $item->status = $request->status;
+        $item->save();
+
+        // Check if the request is an AJAX request
+        if ($request->ajax()) {
+            return response()->json([
+                'status' => $item->status,
+                'message' => $item->status == 1
+                    ? 'Status has been activated successfully.'
+                    : 'Status has been deactivated successfully.'
+            ]);
+        }
+
+        // In case it's not an AJAX request, redirect with a success message
+        return back()->with('success', 'Status has been updated successfully.');
     }
 }

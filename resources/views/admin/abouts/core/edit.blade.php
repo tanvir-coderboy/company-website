@@ -39,7 +39,7 @@ Update Core Value
 
                             <div class="form-group col-12 mb-3">
                                 <label for="description">Description</label>
-                                <textarea id="description" name="description" class="form-control @error('description') is-invalid @enderror" rows="4" placeholder="Description"> {!!$data->description!!} </textarea>
+                                <textarea id="description" name="description" class="form-control summernote @error('description') is-invalid @enderror" rows="4" placeholder="Description"> {!!$data->description!!} </textarea>
                                 @error('description')<span class="text-danger">{{ $message }}</span>@enderror
                             </div>
 
@@ -64,7 +64,7 @@ Update Core Value
 
                             <div class="form-group col-lg-6 mb-3">
                                 <label for="image">Image</label>
-                                <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror">
+                                <input type="file" id="image" name="image" class="form-control p-1 @error('image') is-invalid @enderror">
                                 @if($data->image)
                                     <img id="preview-image" src="{{Storage::url($data->image)}}" alt="Preview" style="max-width: 80px; margin-top: 10px;">
                                 @else
@@ -76,7 +76,7 @@ Update Core Value
                             <!-- Meta Image -->
                             <div class="form-group col-lg-6 mb-3">
                                 <label for="meta_image">Meta Image</label>
-                                <input type="file" id="meta_image" name="meta_image" class="form-control @error('meta_image') is-invalid @enderror">
+                                <input type="file" id="meta_image" name="meta_image" class="form-control p-1 @error('meta_image') is-invalid @enderror">
                                 @if($data->meta_image)
                                     <img id="preview-meta" src="{{Storage::url($data->meta_image)}}" alt="Preview" style="max-width: 80px; margin-top: 10px;">
                                 @else

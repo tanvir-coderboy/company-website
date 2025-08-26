@@ -15,7 +15,7 @@ class WhyChooseController extends Controller
      */
     public function index()
     {
-        $data = WhyChoose::first();
+        $data = WhyChoose::latest()->get();
         return view('admin.whychooses.index', compact('data'));
     }
 
@@ -24,7 +24,7 @@ class WhyChooseController extends Controller
      */
     public function create()
     {
-        //
+         return view('admin.whychooses.create');
     }
 
     /**
@@ -32,7 +32,11 @@ class WhyChooseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        
+        WhyChoose::create($data);
+        return redirect()->route('admin.whychooses.index')->with('success', 'Data Updated Successfully');
+
     }
 
     /**
@@ -40,7 +44,8 @@ class WhyChooseController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = WhyChoose::findOrFail($id);
+         return view('admin.whychooses.edit',compact('data'));
     }
 
     /**
@@ -48,7 +53,8 @@ class WhyChooseController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = WhyChoose::findOrFail($id);
+         return view('admin.whychooses.edit',compact('data'));
     }
 
     /**
@@ -59,22 +65,7 @@ class WhyChooseController extends Controller
 
         $data = WhyChoose::findOrFail($id);
 
-        $request->validate([
-            'title'      => 'required|string|max:255',
-            'experience' => 'required|string',
-            'status'     => 'required|in:0,1',
-        ]);
-
-
-        $image = $request->hasFile('image') ? ImageHelper::uploadImage($request->file('image')) : null;
-
-        if ($request->hasFile('image') && $data->image) {
-            Storage::disk('public')->delete($data->image);
-        }
         $update = $request->all();
-        if ($image) {
-            $input['image'] = $image;
-        }
         $data->update($update);
         return redirect()->route('admin.whychooses.index')->with('success', 'Data Updated Successfully');
     }
@@ -84,6 +75,31 @@ class WhyChooseController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = WhyChoose::findOrFail($id);
+        $data->delete();
+         return redirect()->back()->with('success', 'Data Deleted Successfully');
     }
+
+
+    public function updateStatus(Request $request)
+    {
+        $item = WhyChoose::findOrFail($request->id);
+        $item->status = $request->status;
+        $item->save();
+
+        // Check if the request is an AJAX request
+        if ($request->ajax()) {
+            return response()->json([
+                'status' => $item->status,
+                'message' => $item->status == 1
+                    ? 'Status has been activated successfully.'
+                    : 'Status has been deactivated successfully.'
+            ]);
+        }
+
+        // In case it's not an AJAX request, redirect with a success message
+        return back()->with('success', 'Status has been updated successfully.');
+    }
+
+    
 }

@@ -21,28 +21,28 @@ Banner Update
 
                         <div class="card-body">
                             <div class="row g-3">
-                               
+
                                 <div class="col-lg-6 mb-3">
                                     <label for="title" class="form-label">Title <span class="text-danger">*</span></label>
                                     <input type="text" name="title" id="title" value="{{ $data->title }}" class="form-control @error('title') is-invalid @enderror" required>
                                     @error('title') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
 
-                               
+
                                 <div class="col-lg-6 mb-3">
                                     <label for="button_name" class="form-label">Button Name</label>
                                     <input type="text" name="button_name" id="button_name" value="{{ $data->button_name }}" class="form-control @error('button_name') is-invalid @enderror">
                                     @error('button_name') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
 
-                               
+
                                 <div class="col-lg-6 mb-3">
                                     <label for="button_link" class="form-label">Button Link</label>
                                     <input type="text" name="button_link" id="button_link" value="{{ $data->button_link }}" class="form-control @error('button_link') is-invalid @enderror">
                                     @error('button_link') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
 
-                              
+
                                 <div class="col-lg-6 mb-3">
                                     <label for="button_type" class="form-label">Button Type</label>
                                     <select name="button_type" id="button_type" class="form-control">
@@ -95,11 +95,11 @@ Banner Update
                                 </div>
 
                                 <div class="col-lg-12 mb-3">
-                                    <label for="description" class="form-label" >Description</label>
+                                    <label for="description" class="form-label">Description</label>
                                     <textarea name="description" id="description" cols="4" rows="4" class="form-control @error('description') is-invalid @enderror">{!!$data->description!!}</textarea>
                                     @error('description') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
-                            
+
                                 <div class="col-lg-6 mb-3">
                                     <label for="status" class="form-label">Status</label>
                                     <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
@@ -111,7 +111,7 @@ Banner Update
 
                                 <div class="col-lg-6 mb-3">
                                     <label for="image" class="form-label">Banner Image</label>
-                                    <input type="file" name="image" id="image" class="form-control p-1 @error('image') is-invalid @enderror">
+                                    <input type="file" name="image" id="image" accept="image/*" class="form-control p-1 @error('image') is-invalid @enderror">
                                     @error('image') <span class="text-danger">{{ $message }}</span> @enderror
 
                                     <div class="mt-2">
@@ -132,23 +132,23 @@ Banner Update
     </div>
 </section>
 
- @section('script')
+@section('script')
 <script>
-document.getElementById('image').addEventListener('change', function(event){
-    const preview = document.getElementById('preview-image');
-    const file = event.target.files[0];
+    document.getElementById('image').addEventListener('change', function(event) {
+        const preview = document.getElementById('preview-image');
+        const file = event.target.files[0];
 
-    if(file){
-        const reader = new FileReader();
-        reader.onload = function(e){
-            preview.src = e.target.result;
-            preview.style.display = 'block';
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        } else {
+            preview.style.display = 'none';
         }
-        reader.readAsDataURL(file);
-    } else {
-        preview.style.display = 'none';
-    }
-});
+    });
 </script>
 @endsection
 

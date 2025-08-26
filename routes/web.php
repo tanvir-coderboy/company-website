@@ -24,6 +24,10 @@ use App\Http\Controllers\Admin\WelcomeController;
 use App\Http\Controllers\Admin\WhyChooseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WebsiteController;
+use App\Models\Blog;
+use App\Models\Portfolio;
+use App\Models\PortfolioCategory;
+use App\Models\WhyChoose;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Artisan;
@@ -33,7 +37,7 @@ Route::get('auth/{provider}', [WebsiteController::class, 'redirect'])->name('soc
 Route::get('auth/{provider}/callback', [WebsiteController::class, 'callback'])->name('social.callback');
 
 
-Route::get('/cmd',function(){
+Route::get('/cmd', function () {
     Artisan::call('storage:link');
     Artisan::call('optimize:clear');
     Artisan::call('route:clear');
@@ -97,52 +101,68 @@ Route::prefix('admin')
         Route::resource('users', UserController::class);
 
         // Banner
-        Route::resource('banners',BannerController::class);
+        Route::resource('banners', BannerController::class);
         // About
-        Route::resource('abouts',AboutUsController::class);
+        Route::resource('abouts', AboutUsController::class);
         // Blog
-        Route::resource('blogs',BlogController::class);
+        Route::resource('blogs', BlogController::class);
+        Route::post('blogs/status-update', [BlogController::class, 'updateStatus'])->name('blogs.status.update');
+
         // Contact
-        Route::resource('contacts',ContactController::class);
+        Route::resource('contacts', ContactController::class);
+        Route::post('contacts/status-update', [ContactController::class, 'updateStatus'])->name('contacts.status.update');
+
+
         // CoreValue
-        Route::resource('cores',CoreValueController::class);
-       
+        Route::resource('cores', CoreValueController::class);
+         Route::post('cores/status-update', [CoreValueController::class, 'updateStatus'])->name('cores.status.update');
+
+
         // FAQ
-        Route::resource('faq-categories',FaqCategoryController::class);
-        Route::resource('faqs',FaqController::class);
+        Route::resource('faq-categories', FaqCategoryController::class);
+        Route::post('faq-categories/status-update', [FaqCategoryController::class, 'updateStatus'])->name('faq-categories.status.update');
+
+        Route::resource('faqs', FaqController::class);
+        Route::post('faqs/status-update', [FaqController::class, 'updateStatus'])->name('faqs.status.update');
 
 
         // Pages
-        Route::resource('pages',PageController::class);
+        Route::resource('pages', PageController::class);
+        Route::post('pages/status-update', [PageController::class, 'updateStatus'])->name('pages.status.update');
 
         // Portfolio
-        Route::resource('portfolio-categories',PortfolioCategoryController::class);
-        Route::resource('portfolios',PortfolioController::class);
+        Route::resource('portfolio-categories', PortfolioCategoryController::class);
+        Route::post('portfolio-categories/status-update', [PortfolioCategoryController::class, 'updateStatus'])->name('portfolio-categories.status.update');
+
+        Route::resource('portfolios', PortfolioController::class);
+        Route::post('portfolios/status-update', [PortfolioController::class, 'updateStatus'])->name('portfolios.status.update');
 
 
         // SectionTitle
-        Route::resource('section-title',SectionTitleController::class);
+        Route::resource('section-title', SectionTitleController::class);
 
         // Welcome
-        Route::resource('welcomes',WelcomeController::class);
+        Route::resource('welcomes', WelcomeController::class);
         // Why Choose
-        Route::resource('whychooses',WhyChooseController::class);
+        Route::resource('whychooses', WhyChooseController::class);
+
+        Route::post('whychooses/status-update', [WhyChooseController::class, 'updateStatus'])->name('whychooses.status.update');
 
 
         // Service
-        Route::resource('services',ServiceController::class);
-        Route::resource('service-items',ServiceItemController::class);
+        Route::resource('services', ServiceController::class);
+        Route::post('services/status-update', [ServiceController::class, 'updateStatus'])->name('services.status.update');
+
+        Route::resource('service-items', ServiceItemController::class);
+        Route::post('service-items/status-update', [ServiceItemController::class, 'updateStatus'])->name('service-items.status.update');
+
 
         // Team
-        Route::resource('teams',TeamController::class);
+        Route::resource('teams', TeamController::class);
+        Route::post('teams/status-update', [TeamController::class, 'updateStatus'])->name('teams.status.update');
         // Testimonial
-        Route::resource('testimonials',TestimonialController::class);
-
-      
-
-
-
-
+        Route::resource('testimonials', TestimonialController::class);
+        Route::post('testimonials/status-update', [TestimonialController::class, 'updateStatus'])->name('testimonials.status.update');
 
     });
 

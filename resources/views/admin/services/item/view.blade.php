@@ -45,17 +45,19 @@ Update Service Item
 
                                 <div class="col-6 p-1 mb-3">
                                     <label for="image" class="form-label">Image</label>
-                                    <input type="file" name="image" id="image" class="form-control p-1 @error('image') is-invalid @enderror">
+                                    <input value="{{$data->image}}" accept="image/*" type="file" name="image" id="image" class="form-control p-1 @error('image') is-invalid @enderror">
                                     @error('image') <span class="text-danger">{{ $message }}</span> @enderror
+
                                     @if($data->image)
                                     <div class="mt-2">
                                         <img id="preview-image" src="{{Storage::url($data->image)}}" alt="empty image" width="80px" height="70px">
                                     </div>
                                     @else
                                     <div class="mt-2">
-                                        <img id="preview-image" src="" alt="empty image" width="80px" height="70px">
+                                        <img id="preview-image" src="" alt="empty image" width="80px" height="70px" style="object-fit: cover; border-radius: 8px; display:none;">
                                     </div>
                                     @endif
+
                                 </div>
 
 
@@ -81,7 +83,13 @@ Update Service Item
     </div>
 </section>
 
-{{-- Preview Script --}}
+
+@endsection
+
+
+
+
+@section('script')
 <script>
     // Image preview
     document.getElementById("image").addEventListener("change", function(event) {
@@ -93,6 +101,5 @@ Update Service Item
         };
         reader.readAsDataURL(event.target.files[0]);
     });
-    </script>
-
-    @endsection
+</script>
+@endsection

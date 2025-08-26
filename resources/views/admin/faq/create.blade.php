@@ -49,7 +49,7 @@ Faq Create
                                 <div class="col-12 p-1 mb-3">
                                     <label for="description" class="form-label">Description <span class="text-secondary">(Optional)</span></label>
                                     <textarea name="description" id="description" rows="3"
-                                        class="form-control @error('description') is-invalid @enderror"></textarea>
+                                        class=" summernote form-control @error('description') is-invalid @enderror"></textarea>
                                     @error('description') <span class="text-danger">{{$message}}</span> @enderror
                                 </div>
 
@@ -132,7 +132,7 @@ Faq Create
 
                             <div class="form-group col-lg-6 mb-3">
                                 <label for="meta_image">Meta Image</label>
-                                <input type="file" id="meta_image" name="meta_image" class="form-control @error('meta_image') is-invalid @enderror">
+                                <input type="file" id="meta_image" name="meta_image" class="form-control p-1 @error('meta_image') is-invalid @enderror">
                                 <img id="preview-meta" src="" alt="Preview" style="max-width: 80px; margin-top: 10px; display: none;">
                                 @error('meta_image')<span class="text-danger">{{ $message }}</span>@enderror
                             </div>

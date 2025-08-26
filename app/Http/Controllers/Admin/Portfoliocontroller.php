@@ -36,19 +36,6 @@ class PortfolioController extends Controller
     {
         $data = $request->all();
 
-        $request->validate([
-            'category_id'      => 'required|string',
-            'image'            => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'link'             => 'nullable|url|max:255',
-
-            'meta_title'       => 'nullable|string|max:255',
-            'meta_description' => 'nullable|string|max:5000',
-            'meta_keyword'     => 'nullable|string|max:5000',
-            'meta_image'       => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-
-            'status'           => 'required|in:0,1',
-        ]);
-
 
         $image = $request->hasFile('image') ? ImageHelper::uploadImage($request->file('image')) : null;
         $meta = $request->hasFile('meta_image') ? ImageHelper::uploadImage($request->file('meta_image')) : null;
@@ -87,21 +74,6 @@ class PortfolioController extends Controller
     public function update(Request $request, string $id)
     {
         $data = Portfolio::findOrFail($id);
-
-        
-        $request->validate([
-            'category_id'      => 'required|string',
-            'image'            => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'link'             => 'nullable|url|max:255',
-
-            'meta_title'       => 'nullable|string|max:255',
-            'meta_description' => 'nullable|string|max:5000',
-            'meta_keyword'     => 'nullable|string|max:5000',
-            'meta_image'       => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-
-            'status'           => 'required|in:0,1',
-        ]);
-
 
         if ($request->hasFile('image') && $data->image) {
             Storage::disk('public')->delete($data->image);
@@ -145,4 +117,25 @@ class PortfolioController extends Controller
         $data->delete();
         return redirect()->back()->with('success', 'Data Deleted Successfully');
     }
+
+     public function updateStatus(Request $request)
+    {
+        $item = Portfolio::findOrFail($request->id);
+        $item->status = $request->status;
+        $item->save();
+
+        // Check if the request is an AJAX request
+        if ($request->ajax()) {
+            return response()->json([
+                'status' => $item->status,
+                'message' => $item->status == 1
+                    ? 'Status has been activated successfully.'
+                    : 'Status has been deactivated successfully.'
+            ]);
+        }
+
+        // In case it's not an AJAX request, redirect with a success message
+        return back()->with('success', 'Status has been updated successfully.');
+    }
+
 }

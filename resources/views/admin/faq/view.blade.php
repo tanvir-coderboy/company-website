@@ -18,15 +18,15 @@ Faq Update
                         <div class="card-header bg-info">
                             <h3 class="card-title">FAQ Update</h3>
                             @can('view user')
-                        <a href="{{ route('admin.faqs.index') }}" class="btn btn-success float-right">
-                            <i class="fa fa-angle-left"></i> Back
-                        </a>
-                        @endcan
+                            <a href="{{ route('admin.faqs.index') }}" class="btn btn-success float-right">
+                                <i class="fa fa-angle-left"></i> Back
+                            </a>
+                            @endcan
                         </div>
 
                         <div class="card-body">
                             <div class="row">
-                                
+
                                 <div class="col-6 p-1 mb-3">
                                     <label for="category_id" class="form-label">Category <span class="text-danger">*</span></label>
                                     <select name="category_id" id="category_id" class="form-control">
@@ -35,7 +35,7 @@ Faq Update
                                         @endforeach
                                     </select>
                                 </div>
-                                
+
 
 
                                 <div class="col-6 p-1 mb-3">
@@ -49,7 +49,7 @@ Faq Update
                                 <div class="col-12 p-1 mb-3">
                                     <label for="description" class="form-label">Description <span class="text-secondary">(Optional)</span></label>
                                     <textarea name="description" id="description" rows="3"
-                                        class="form-control @error('description') is-invalid @enderror">{!!$data->description!!}</textarea>
+                                        class=" summernote form-control @error('description') is-invalid @enderror">{!!$data->description!!}</textarea>
                                     @error('description') <span class="text-danger">{{$message}}</span> @enderror
                                 </div>
 
@@ -131,28 +131,29 @@ Faq Update
 
 
 
-                            <div class="from-group  col-lg-6">
-                                    <label for="image" class="form-label">Meta Image <span class="text-secondary">(optional)</span></label>
-                                    <input type="file" class="form-control p-1 @error('image') is-invalid @enderror" id="image" name="image">
-                                    @if($data->image)
+                                <div class="col-6 p-1 mb-3">
+                                    <label for="image" class="form-label">Meta Image</label>
+                                    <input value="{{$data->meta_image}}" accept="image/*" type="file" name="meta_image" id="meta_image" class="form-control p-1 @error('image') is-invalid @enderror">
+                                    @error('image') <span class="text-danger">{{ $message }}</span> @enderror
+
+                                    @if($data->meta_image)
                                     <div class="mt-2">
-                                        <img src="{{ Storage::url($data->image) }}" width="80" height="60" alt="Current Meta Image" id="preview-meta">
+                                        <img id="preview-image" src="{{Storage::url($data->meta_image)}}" alt="empty image" width="80px" height="70px">
                                     </div>
                                     @else
                                     <div class="mt-2">
-                                        <img id="preview-meta" src="" width="80" height="60" style="display:none;" alt="Meta Preview">
+                                        <img id="preview-image" src="" alt="empty image" width="80px" height="70px" style="object-fit: cover; border-radius: 8px; display:none;">
                                     </div>
                                     @endif
+
                                 </div>
-
-
                             </div>
-                        </div>
 
-                        <div class="card-footer d-flex justify-content-end">
-                            <button type="submit" class="btn btn-info"><i class="fa fa-save"></i> Update</button>
+                            
                         </div>
-                    </div>
+                        <div class="card-footer d-flex justify-content-end">
+                                <button type="submit" class="btn btn-info"><i class="fa fa-save"></i> Update</button>
+                            </div>
                 </form>
             </div>
         </div>
@@ -164,10 +165,9 @@ Faq Update
 
 @section('script')
 <script>
-
-    // Meta Image Preview
+    // Meta meta_image Preview
     document.getElementById('meta_image').addEventListener('change', function(event) {
-        const preview = document.getElementById('preview-meta');
+        const preview = document.getElementById('preview-image');
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();

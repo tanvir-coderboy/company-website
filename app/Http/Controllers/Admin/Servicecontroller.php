@@ -14,7 +14,7 @@ class ServiceController extends Controller
     public function index()
     {
         $data = Service::latest()->get();
-        return view('admin.services.index',compact('data'));
+        return view('admin.services.index', compact('data'));
     }
 
     /**
@@ -30,16 +30,14 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-
-        $request->validate([
-        'title'       => 'nullable|string|max:255',
-        'description' => 'nullable|string',
-        'status'      => 'nullable|in:0,1',
-    ]);
+        $data = $request->only([
+            'title',
+            'description',
+            'status',
+        ]);
 
         Service::create($data);
-        return redirect()->route('admin.services.index')->with('success','Data Created Successfully');
+        return redirect()->route('admin.services.index')->with('success', 'Data Created Successfully');
     }
 
     /**
@@ -48,7 +46,7 @@ class ServiceController extends Controller
     public function show(string $id)
     {
         $data = Service::findOrFail($id);
-        return view('admin.services.view',compact('data'));
+        return view('admin.services.view', compact('data'));
     }
 
     /**
@@ -57,7 +55,7 @@ class ServiceController extends Controller
     public function edit(string $id)
     {
         $data = Service::findOrFail($id);
-        return view('admin.services.view',compact('data'));
+        return view('admin.services.view', compact('data'));
     }
 
     /**
@@ -67,15 +65,13 @@ class ServiceController extends Controller
     {
         $data = Service::findOrFail($id);
 
-        $request->validate([
-        'title'       => 'required|string|max:255',
-        'description' => 'nullable|string',
-        'status'      => 'required|in:0,1',
-    ]);
-
-        $update = $request->all();
+        $update = $request->only([
+            'title',
+            'description',
+            'status',
+        ]);
         $data->update($update);
-        return redirect()->route('admin.services.index')->with('success','Data Updated Successfully');
+        return redirect()->route('admin.services.index')->with('success', 'Data Updated Successfully');
     }
 
     /**
@@ -83,9 +79,29 @@ class ServiceController extends Controller
      */
     public function destroy(string $id)
     {
-       
+
         $data = Service::findOrFail($id);
         $data->delete();
-        return redirect()->back()->with('success','Data Deleted Successfully');
+        return redirect()->back()->with('success', 'Data Deleted Successfully');
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $item = Service::findOrFail($request->id);
+        $item->status = $request->status;
+        $item->save();
+
+        // Check if the request is an AJAX request
+        if ($request->ajax()) {
+            return response()->json([
+                'status' => $item->status,
+                'message' => $item->status == 1
+                    ? 'Status has been activated successfully.'
+                    : 'Status has been deactivated successfully.'
+            ]);
+        }
+
+        // In case it's not an AJAX request, redirect with a success message
+        return back()->with('success', 'Status has been updated successfully.');
     }
 }

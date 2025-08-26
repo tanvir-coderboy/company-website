@@ -144,11 +144,12 @@ $setting = \App\Models\Setting::first();
             font-weight: 500 !important;
             font-size: 0.9rem !important;
         }
+
         [class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link {
             color: #c2c7d0 !important;
         }
-        .note-toolbar
-        {
+
+        .note-toolbar {
             background: hsla(0, 0%, 50.2%, .11) !important;
             border-color: transparent !important;
         }
@@ -417,6 +418,15 @@ $setting = \App\Models\Setting::first();
 
             });
         });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            })
+        })
     </script>
 
     @yield('script')

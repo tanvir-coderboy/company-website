@@ -1,66 +1,131 @@
 @extends('admin.layouts.app')
 
 @section('title')
-WhyChoose US Update
+Service Item List
 @endsection
 
 @section('content')
-
 <section class="content pt-4">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8 m-auto">
-                <form id="quickForm" action="{{ route('admin.whychooses.update', $data->id) }}" method="POST">
-                    @csrf
-                    @method('PUT')
+            <div class="col-md-12">
+                <div class="card card-cyan">
+                    <div class="card-header">
+                        <h3 class="card-title">Why Chooses List</h3>
+                        @can('create user')
 
-                    <div class="card">
-                        <div class="card-header bg-info">
-                            <h3 class="card-title">WhyChoose US Update</h3>
-                        </div>
+                        <a href="{{ route('admin.whychooses.create') }}" class="btn btn-success float-right"><i class="fa fa-plus"></i> Add </a>
 
-                        <div class="card-body">
-                            <div class="row g-3">
+                        @endcan
 
-                                <div class="col-lg-12 p-1 mb-3">
-                                    <label for="title" class="form-label">Title</label>
-                                    <input type="text" name="title" id="title" value="{{ $data->title }}" placeholder="Enter Title" class="form-control @error('title') is-invalid @enderror">
-                                    @error('title') <span class="text-danger">{{ $message }}</span> @enderror
-                                </div>
-
-
-                                <div class="col-lg-12 p-1 mb-3">
-                                    <label for="experience" class="form-label">Experience</label>
-                                    <input type="text" name="experience" id="experience" value="{{ $data->experience }}" placeholder="Enter experience" class="form-control @error('experience') is-invalid @enderror">
-                                    @error('experience') <span class="text-danger">{{ $message }}</span> @enderror
-                                </div>
-
-
-
-                                <div class="col-lg-12 p-1 mb-3">
-                                    <label for="status" class="form-label">Status</label>
-                                    <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
-                                        <option value="1" {{ $data->status == 1 ? 'selected' : '' }}>Active</option>
-                                        <option value="0" {{ $data->status == 0 ? 'selected' : '' }}>Deactive</option>
-                                    </select>
-                                    @error('status') <span class="text-danger">{{ $message }}</span> @enderror
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class="card-footer d-flex justify-content-end">
-                                <button type="submit" class="btn btn-info"><i class="fa fa-save"></i> Update</button>
-                            </div>
                     </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Sl</th>
+                                    <th>Title</th>
+                                    <th>Experience</th>
+                                    <th class="text-center">Status</th>
+                                    <th width="15%" class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($data as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{$item->title }}</td>
+                                    <td>{{$item->experience}}</td>
 
+                                    <td class="text-center">
+                                        <label class="switch">
+                                            <input type="checkbox"
+                                                class="status-toggle"
+                                                data-id="{{ $item->id }}"
+                                                {{ $item->status == 1 ? 'checked' : '' }}>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </td>
+
+                                    <td class="text-center">
+                                        @can('edit user')
+                                        <a href="{{ route('admin.whychooses.show', $item->id) }}" class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" title="View"><i class="fa fa-eye"></i></a>
+                                        <a href="{{ route('admin.whychooses.edit', $item->id) }}" class="btn btn-sm btn-primary" data-bs-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
+                                        @endcan
+                                        @can('delete user')
+                                        <form id="delete-form-{{ $item->id }}" action="{{ route('admin.whychooses.destroy', $item->id) }}" method="POST" style="display: none;">
+                                            @csrf @method('DELETE')
+                                        </form>
+                                        <a href="#" class="btn btn-sm btn-danger delete-btn" data-id="{{ $item->id }}" data-bs-toggle="tooltip" title="Delete"><i class="fa fa-trash"></i></a>
+                                        @endcan
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
 
             </div>
-
-            </form>
         </div>
-    </div>
+
     </div>
 </section>
+
+@endsection
+
+
+@section('script')
+<script>
+    $(document).ready(function() {
+        $('.status-toggle').on('change', function() {
+            let checkbox = $(this);
+            let id = checkbox.data('id');
+            let status = checkbox.is(':checked') ? 1 : 0;
+
+            $.ajax({
+                url: "{{ route('admin.whychooses.status.update') }}",
+                method: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    id: id,
+                    status: status
+                },
+                success: function(res) {
+                    if (res.status == 1) {
+                        // Success message using SweetAlert2
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Status has been activated successfully.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    } else {
+                        // Warning message using SweetAlert2
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Status has been deactivated successfully.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+                },
+                error: function() {
+                    // Error message using SweetAlert2
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'There was a problem updating the status.',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    checkbox.prop('checked', !status); // Rollback if the update fails
+                }
+            });
+        });
+    });
+</script>
 
 @endsection

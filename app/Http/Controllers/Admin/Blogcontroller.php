@@ -35,17 +35,6 @@ class BlogController extends Controller
 
         $data = $request->all();
 
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'short_description' => 'nullable|string|max:5000',
-            'description' => 'nullable|string',
-            'meta_title' => 'nullable|string|max:555',
-            'meta_description' => 'nullable|string|max:5000',
-            'meta_keyword' => 'nullable|string|max:5000',
-
-            'status' => 'required|in:0,1',
-        ]);
-
 
         $image = $request->hasFile('featured_image') ? ImageHelper::uploadImage($request->file('featured_image')) : null;
         $meta = $request->hasFile('meta_image') ? ImageHelper::uploadImage($request->file('meta_image')) : null;
@@ -130,5 +119,27 @@ class BlogController extends Controller
         $data->delete();
 
         return redirect()->back()->with('message', 'Data Delete Successfully');
+    }
+
+
+
+      public function updateStatus(Request $request)
+    {
+        $item = Blog::findOrFail($request->id);
+        $item->status = $request->status;
+        $item->save();
+
+        // Check if the request is an AJAX request
+        if ($request->ajax()) {
+            return response()->json([
+                'status' => $item->status,
+                'message' => $item->status == 1
+                    ? 'Status has been activated successfully.'
+                    : 'Status has been deactivated successfully.'
+            ]);
+        }
+
+        // In case it's not an AJAX request, redirect with a success message
+        return back()->with('success', 'Status has been updated successfully.');
     }
 }

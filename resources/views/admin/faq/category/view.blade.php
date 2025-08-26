@@ -38,7 +38,7 @@ FaqCategory Update
                                     <input type="file" class="form-control p-1 @error('image') is-invalid @enderror" id="image" name="image">
                                     @if($data->image)
                                     <div class="mt-2">
-                                        <img src="{{ Storage::url($data->image) }}" width="80" height="60" alt="Current Image">
+                                        <img src="{{ Storage::url($data->image) }}" id="preview-image" width="80" height="60" alt="Current Image">
                                     </div>
                                     @endif
                                 </div>

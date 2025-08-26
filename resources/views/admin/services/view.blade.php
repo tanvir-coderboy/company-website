@@ -9,7 +9,7 @@ Update Service
 <section class="content pt-4">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-7 m-auto">
+            <div class="col-md-12 m-auto">
                 <form id="quickForm" action="{{ route('admin.services.update',$data->id) }}" method="POST">
                     @csrf
                     @method('PUT')
@@ -35,7 +35,7 @@ Update Service
 
                                 <div class="col-12 form-group">
                                     <label for="company_name">Description<span class="text-danger">*</span></label>
-                                    <textarea name="description" rows="4" class="form-control @error('description') is-invalid @enderror" id="description"> {!!$data->description!!}</textarea>
+                                    <textarea name="description" rows="4" class="form-control summernote @error('description') is-invalid @enderror" id="description"> {!!$data->description!!}</textarea>
                                     @error('description')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror

@@ -54,7 +54,7 @@ Testimonial Create
 
                                 <div class="col-md-6 p-1 mb-3">
                                     <label for="image" class="form-label">Image</label>
-                                    <input type="file" name="image" id="image" class="form-control  @error('image') is-invalid @enderror">
+                                    <input type="file" name="image" id="image" class="form-control p-1  @error('image') is-invalid @enderror">
                                     @error('image') <span class="text-danger">{{ $message }}</span> @enderror
                                     <div class="mt-2">
                                         <img id="preview-image" src="" alt="Preview" width="70" height="60" style="object-fit:cover;border-radius:8px;display:none;">

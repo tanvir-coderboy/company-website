@@ -35,20 +35,6 @@ class TeamController extends Controller
         $data = $request->all();
 
 
-        $request->validate([
-            'name'        => 'required|string|max:255',
-            'designation' => 'nullable|string|max:255',
-            'bio'         => 'nullable|string',
-            'image'       => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'facebook'    => 'nullable|url|max:255',
-            'twitter'     => 'nullable|url|max:255',
-            'instagram'   => 'nullable|url|max:255',
-            'linkedin'    => 'nullable|url|max:255',
-            'serial'      => 'nullable|integer',
-            'status'      => 'required|in:0,1',
-        ]);
-
-
         $image = $request->hasFile('image') ? ImageHelper::uploadImage($request->file('image')) : null;
         $data['image'] = $image;
         Team::create($data);
@@ -81,20 +67,6 @@ class TeamController extends Controller
         $data = Team::findOrFail($id);
 
 
-        $request->validate([
-            'name'        => 'required|string|max:255',
-            'designation' => 'nullable|string|max:255',
-            'bio'         => 'nullable|string',
-            'image'       => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'facebook'    => 'nullable|url|max:255',
-            'twitter'     => 'nullable|url|max:255',
-            'instagram'   => 'nullable|url|max:255',
-            'linkedin'    => 'nullable|url|max:255',
-            'serial'      => 'nullable|integer',
-            'status'      => 'required|in:0,1',
-        ]);
-
-
         $image = $request->hasFile('image') ? ImageHelper::uploadImage($request->file('image')) : null;
 
         if ($request->hasFile('image') && $data->image) {
@@ -121,4 +93,26 @@ class TeamController extends Controller
         $data->delete();
         return redirect()->back()->with('success', 'Data Deleted Successfully');
     }
+
+
+     public function updateStatus(Request $request)
+    {
+        $item = Team::findOrFail($request->id);
+        $item->status = $request->status;
+        $item->save();
+
+        // Check if the request is an AJAX request
+        if ($request->ajax()) {
+            return response()->json([
+                'status' => $item->status,
+                'message' => $item->status == 1
+                    ? 'Status has been activated successfully.'
+                    : 'Status has been deactivated successfully.'
+            ]);
+        }
+
+        // In case it's not an AJAX request, redirect with a success message
+        return back()->with('success', 'Status has been updated successfully.');
+    }
+
 }

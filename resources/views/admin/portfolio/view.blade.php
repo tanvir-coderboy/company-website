@@ -63,34 +63,40 @@ Update Portfolio
                                 </div>
 
 
-                                <div class="from-group  col-lg-6">
-                                    <label for="image" class="form-label"> Image <span class="text-secondary">(optional)</span></label>
-                                    <input type="file" class="form-control p-1 @error('image') is-invalid @enderror" id="image" name="image">
+                                <div class="col-6 p-1 mb-3">
+                                    <label for="image" class="form-label">Image</label>
+                                    <input value="{{$data->image}}" accept="image/*" type="file" name="image" id="image" class="form-control p-1 @error('image') is-invalid @enderror">
+                                    @error('image') <span class="text-danger">{{ $message }}</span> @enderror
+
                                     @if($data->image)
                                     <div class="mt-2">
-                                        <img src="{{ Storage::url($data->image) }}" width="80" height="60" alt="Current Meta Image" id="preview-meta">
+                                        <img id="preview-image" src="{{Storage::url($data->image)}}" alt="empty image" width="80px" height="70px">
                                     </div>
                                     @else
                                     <div class="mt-2">
-                                        <img id="preview-meta" src="" width="80" height="60" style="display:none;" alt="Meta Preview">
+                                        <img id="preview-image" src="" alt="empty image" width="80px" height="70px" style="object-fit: cover; border-radius: 8px; display:none;">
                                     </div>
                                     @endif
+
                                 </div>
 
 
 
-                                <div class="from-group  col-lg-6">
-                                    <label for="meta_image" class="form-label">Meta Image <span class="text-secondary">(optional)</span></label>
-                                    <input type="file" class="form-control p-1 @error('meta_image') is-invalid @enderror" id="meta_image" name="meta_image">
+                                <div class="col-6 p-1 mb-3">
+                                    <label for="meta_image" class="form-label">Meta Image</label>
+                                    <input value="{{$data->meta_image}}" accept="image/*" type="file" name="meta_image" id="meta_image" class="form-control p-1 @error('meta_image') is-invalid @enderror">
+                                    @error('image') <span class="text-danger">{{ $message }}</span> @enderror
+
                                     @if($data->meta_image)
                                     <div class="mt-2">
-                                        <img src="{{ Storage::url($data->meta_image) }}" width="80" height="60" alt="Current Meta Image" id="preview-meta">
+                                        <img id="preview-meta" src="{{Storage::url($data->meta_image)}}" alt="empty image" width="80px" height="70px">
                                     </div>
                                     @else
                                     <div class="mt-2">
-                                        <img id="preview-meta" src="" width="80" height="60" style="display:none;" alt="Meta Preview">
+                                        <img id="preview-meta" src="" alt="empty image" width="80px" height="70px" style="object-fit: cover; border-radius: 8px; display:none;">
                                     </div>
                                     @endif
+
                                 </div>
 
 

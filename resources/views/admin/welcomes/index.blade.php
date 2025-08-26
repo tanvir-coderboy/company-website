@@ -30,7 +30,7 @@ Welcome Update
 
                                 <div class="col-lg-12 p-1 mb-3">
                                     <label for="description" class="form-label">Description</label>
-                                    <textarea name="description" id="description" rows="3" placeholder="Enter Description" class="form-control @error('description') is-invalid @enderror">{{ $data->description }}</textarea>
+                                    <textarea name="description" id="description" rows="3" placeholder="Enter Description" class=" summernote form-control @error('description') is-invalid @enderror">{{ $data->description }}</textarea>
                                     @error('description') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
 
@@ -133,13 +133,13 @@ Welcome Update
                             </div>
                         </div>
 
-<div class="card-footer d-flex justify-content-end">
-                <button type="submit" class="btn btn-info"><i class="fa fa-save"></i> Update</button>
-            </div>
+                        <div class="card-footer d-flex justify-content-end">
+                            <button type="submit" class="btn btn-info"><i class="fa fa-save"></i> Update</button>
+                        </div>
                     </div>
             </div>
 
-            
+
 
             </form>
         </div>

@@ -30,14 +30,6 @@ class ContactController extends Controller
      */
    public function store(Request $request)
 {
-    $request->validate([
-        'reaching' => 'nullable|string|max:255',
-        'email'    => 'nullable|email|max:255',
-        'phone'    => 'nullable|string|max:20',
-        'address'  => 'nullable|string|max:255',
-        'message'  => 'nullable|string',
-        'status'   => 'required|boolean',
-    ]);
 
     Contact::create($request->only([
         'reaching',
@@ -75,14 +67,6 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
 {
-    $request->validate([
-        'reaching' => 'nullable|string|max:255',
-        'email'    => 'nullable|email|max:255',
-        'phone'    => 'nullable|string|max:20',
-        'address'  => 'nullable|string|max:255',
-        'message'  => 'nullable|string',
-        'status'   => 'required|boolean',
-    ]);
 
     $data = Contact::findOrFail($id);
 
@@ -107,5 +91,26 @@ class ContactController extends Controller
         $data = Contact::findOrFail($id);
         $data->delete();
         return redirect()->back()->with('success','Data Deleted Successfully');
+    }
+
+
+     public function updateStatus(Request $request)
+    {
+        $item = Contact::findOrFail($request->id);
+        $item->status = $request->status;
+        $item->save();
+
+        // Check if the request is an AJAX request
+        if ($request->ajax()) {
+            return response()->json([
+                'status' => $item->status,
+                'message' => $item->status == 1
+                    ? 'Status has been activated successfully.'
+                    : 'Status has been deactivated successfully.'
+            ]);
+        }
+
+        // In case it's not an AJAX request, redirect with a success message
+        return back()->with('success', 'Status has been updated successfully.');
     }
 }

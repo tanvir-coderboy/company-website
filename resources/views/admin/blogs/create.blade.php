@@ -55,7 +55,7 @@ Add Blogs
 
                             <div class="form-group col-12 mb-3">
                                 <label>Meta Description</label>
-                                <textarea name="meta_description" class="form-control" placeholder="Meta Description"></textarea>
+                                <textarea name="meta_description" class="form-control summernote" placeholder="Meta Description"></textarea>
                                 @error('meta_description')<span class="text-danger">{{ $message }}</span>@enderror
                             </div>
 

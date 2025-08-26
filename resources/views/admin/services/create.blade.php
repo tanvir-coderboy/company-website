@@ -9,7 +9,7 @@ Service Create
 <section class="content pt-4">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-7 m-auto">
+            <div class="col-md-12 m-auto">
                 <form id="quickForm" action="{{ route('admin.services.store',) }}" method="POST">
                     @csrf
                     @method('POST')
@@ -26,7 +26,7 @@ Service Create
                             <div class="row">
                                 <div class="col-12 form-group">
                                     <label for="company_name">Title<span class="text-danger">*</span></label>
-                                    <input value=" " type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="title" placeholder="">
+                                    <input value=" " type="text" name="title" class="form-control  @error('title') is-invalid @enderror" id="title" placeholder="">
                                     @error('title')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -35,7 +35,7 @@ Service Create
 
                                 <div class="col-12 form-group">
                                     <label for="company_name">Description<span class="text-danger">*</span></label>
-                                    <textarea name="description" rows="4" class="form-control @error('description') is-invalid @enderror" id="description"></textarea>
+                                    <textarea name="description" rows="4" class="form-control summernote @error('description') is-invalid @enderror" id="description"></textarea>
                                     @error('description')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror

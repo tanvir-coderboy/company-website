@@ -36,16 +36,6 @@ class ServiceItemController extends Controller
     {
         $data = $request->all();
 
-
-        $request->validate([
-            'service_id' => 'required|string',
-            'title'      => 'required|string|max:255',
-            'image'      => 'nullable|image|mimes:jpg,jpeg,png,webp|',
-            'status'     => 'required|in:0,1',
-        ]);
-
-
-
         $image = $request->hasFile('image') ? ImageHelper::uploadImage($request->file('image')) : null;
         $data['image'] = $image;
         ServiceItem::create($data);
@@ -78,13 +68,6 @@ class ServiceItemController extends Controller
     {
         $data = ServiceItem::findOrFail($id);
 
-        $request->validate([
-            'service_id' => 'required|string',
-            'title'      => 'required|string|max:255',
-            'image'      => 'nullable|image|mimes:jpg,jpeg,png,webp|',
-            'status'     => 'required|in:0,1',
-        ]);
-
         if ($request->hasFile('image') && $data->image) {
             Storage::disk('public')->delete($data->image);
         }
@@ -110,5 +93,26 @@ class ServiceItemController extends Controller
         }
         $data->delete();
         return redirect()->back()->with('success', 'Data Deleted Successfully');
+    }
+
+
+    public function updateStatus(Request $request)
+    {
+        $item = ServiceItem::findOrFail($request->id);
+        $item->status = $request->status;
+        $item->save();
+
+        // Check if the request is an AJAX request
+        if ($request->ajax()) {
+            return response()->json([
+                'status' => $item->status,
+                'message' => $item->status == 1
+                    ? 'Status has been activated successfully.'
+                    : 'Status has been deactivated successfully.'
+            ]);
+        }
+
+        // In case it's not an AJAX request, redirect with a success message
+        return back()->with('success', 'Status has been updated successfully.');
     }
 }

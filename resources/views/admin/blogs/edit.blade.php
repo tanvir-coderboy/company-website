@@ -42,7 +42,7 @@ Update Blogs
 
                             <div class="form-group col-12 mb-3">
                                 <label>Description</label>
-                                <textarea name="description" id="description" class="form-control" rows="4" placeholder="Description">{!!$data->description!!}</textarea>
+                                <textarea name="description" id="description" class="form-control summernote" rows="4" placeholder="Description">{!!$data->description!!}</textarea>
                                 @error('description')<span class="text-danger">{{ $message }}</span>@enderror
                             </div>
 
@@ -56,7 +56,7 @@ Update Blogs
 
                             <div class="form-group col-12 mb-3">
                                 <label>Meta Description</label>
-                                <textarea name="meta_description" id="meta_description" class="form-control" placeholder="Meta Description">{!!$data->short_description!!}</textarea>
+                                <textarea name="meta_description" id="meta_description" class="form-control " placeholder="Meta Description">{!!$data->short_description!!}</textarea>
                                 @error('meta_description')<span class="text-danger">{{ $message }}</span>@enderror
                             </div>
 

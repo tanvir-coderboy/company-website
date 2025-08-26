@@ -62,8 +62,8 @@ Add Page
 
                             <div class="form-group col-lg-6 mb-3">
                                 <label>Meta Image</label>
-                                <input type="file" name="meta_image" id="meta_image" class="form-control">
-                                <img id="preview-meta" src="" alt="Preview" style="max-width: 80px; margin-top: 10px;">
+                                <input type="file" name="meta_image" id="meta_image" class=" p-1 form-control">
+                                <img id="preview-meta" src="" alt="Preview" style="max-width: 80px; margin-top: 10px; display:none;">
                                 @error('meta_image')<span class="text-danger">{{ $message }}</span>@enderror
                             </div>
 

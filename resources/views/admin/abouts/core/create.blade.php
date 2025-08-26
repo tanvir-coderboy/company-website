@@ -26,21 +26,21 @@ Add Core Value
                         <div class="card-body row">
                             <div class="form-group col-lg-6 mb-3">
                                 <label for="title">Title <span class="text-danger">*</span></label>
-                                <input type="text" id="title" name="title" value="{{ old('title') }}" class="form-control @error('title') is-invalid @enderror" placeholder="Title" required>
+                                <input type="text" id="title" name="title" value="{{ old('title') }}" class="form-control @error('title') is-invalid @enderror" placeholder="Title" >
                                 @error('title')<span class="text-danger">{{ $message }}</span>@enderror
                             </div>
 
 
                             <div class="form-group col-lg-6 mb-3">
                                 <label for="serial">Serial <span class="text-danger">*</span></label>
-                                <input type="number" id="serial" name="serial" value="{{ old('serial') }}" class="form-control @error('serial') is-invalid @enderror" placeholder="Serial" required>
+                                <input type="number" id="serial" name="serial" value="{{ old('serial') }}" class="form-control @error('serial') is-invalid @enderror" placeholder="Serial" >
                                 @error('serial')<span class="text-danger">{{ $message }}</span>@enderror
                             </div>
 
 
                             <div class="form-group col-12 mb-3">
                                 <label for="description">Description</label>
-                                <textarea id="description" name="description" class="form-control @error('description') is-invalid @enderror" rows="4" placeholder="Description"> </textarea>
+                                <textarea id="description" name="description" class="form-control summernote @error('description') is-invalid @enderror" rows="4" placeholder="Description"> </textarea>
                                 @error('description')<span class="text-danger">{{ $message }}</span>@enderror
                             </div>
 
@@ -71,14 +71,14 @@ Add Core Value
 
                             <div class="form-group col-lg-6 mb-3">
                                 <label for="image">Image</label>
-                                <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror">
+                                <input type="file" id="image" name="image" class=" p-1 form-control @error('image') is-invalid @enderror">
                                 <img id="preview-image" src="" alt="Preview" style="max-width: 80px; margin-top: 10px; display: none;">
                                 @error('image')<span class="text-danger">{{ $message }}</span>@enderror
                             </div>
 
                             <div class="form-group col-lg-6 mb-3">
                                 <label for="meta_image">Meta Image</label>
-                                <input type="file" id="meta_image" name="meta_image" class="form-control @error('meta_image') is-invalid @enderror">
+                                <input type="file" id="meta_image" name="meta_image" class=" p-1 form-control @error('meta_image') is-invalid @enderror">
                                 <img id="preview-meta" src="" alt="Preview" style="max-width: 80px; margin-top: 10px; display: none;">
                                 @error('meta_image')<span class="text-danger">{{ $message }}</span>@enderror
                             </div>
