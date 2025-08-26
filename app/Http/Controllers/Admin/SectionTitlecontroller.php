@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
 use App\Models\SectionTitle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SectionTitleController extends Controller
 {
@@ -56,36 +58,19 @@ class SectionTitleController extends Controller
     {
         $data = SectionTitle::findOrFail($id);
 
-        $request->validate([
-            'service_title' => 'nullable|string|max:255',
-            'service_description' => 'nullable|string',
-            'chosse_title' => 'nullable|string|max:255',
-            'chosse_description' => 'nullable|string',
-            'testimonial_title' => 'nullable|string|max:255',
-            'testimonial_description' => 'nullable|string',
-            'portfolio_title' => 'nullable|string|max:255',
-            'portfolio_description' => 'nullable|string',
-            'blog_title' => 'nullable|string|max:255',
-            'blog_description' => 'nullable|string',
-            'contact_title' => 'nullable|string|max:255',
-            'contact_description' => 'nullable|string',
-        ]);
+        $chosse_image = $request->hasFile('chosse_image') ? ImageHelper::uploadImage($request->file('chosse_image')) : null;
+    
+        if ($request->hasFile('chosse_image') && $data->chosse_image) {
+            Storage::disk('public')->delete($data->chosse_image);
+        }
 
-        $data->update($request->only([
-            'service_title',
-            'service_description',
-            'chosse_title',
-            'chosse_description',
-            'testimonial_title',
-            'testimonial_description',
-            'portfolio_title',
-            'portfolio_description',
-            'blog_title',
-            'blog_description',
-            'contact_title',
-            'contact_description',
-        ]));
+        $update = $request->all();
 
+        if($chosse_image){
+            $update['chosse_image'] = $chosse_image;
+        }
+
+        $data->update($update);
         return redirect()->route('admin.section-title.index')->with('success', 'Section titles updated successfully');
     }
 

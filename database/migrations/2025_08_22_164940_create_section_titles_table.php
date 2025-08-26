@@ -17,6 +17,7 @@ return new class extends Migration
             $table->longText('service_description')->nullable();
             $table->string('chosse_title')->nullable();
             $table->longText('chosse_description')->nullable();
+            $table->longText('chosse_image')->nullable();
             $table->string('testimonial_title')->nullable();
             $table->longText('testimonial_description')->nullable();
             $table->string('portfolio_title')->nullable();
@@ -25,6 +26,8 @@ return new class extends Migration
             $table->longText('blog_description')->nullable();
             $table->string('contact_title')->nullable();
             $table->longText('contact_description')->nullable();
+            $table->string('team_title')->nullable();
+            $table->longText('team_description')->nullable();
             $table->timestamps();
         });
     }

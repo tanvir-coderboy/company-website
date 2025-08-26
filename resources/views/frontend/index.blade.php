@@ -159,82 +159,21 @@
         <div class="row align-items-center">
 
             <div class="col-lg-6 col-12">
-                <img src="{{ asset('frontend') }}/img/contact.png" alt="" style="width: 100%;">
+                <img src="{{ Storage::url($title->chosse_image) }}" alt="{{ $title->chosse_title }}" style="width: 100%;">
             </div>
             <div class="col-lg-6 col-12">
 
                 <div class="row">
+                    @foreach($whychooses as $item)
+                    <div class="col-lg-4 col-6 mb-3 p-0">
+                        <div style="min-height: 177px;background: linear-gradient(45deg, #3857b5, #232e4f);color: white;"
+                            class="ps-1 pe-1 card-body me-2 service-box shadow text-center rounded">
+                            <h3 class="fw-bold text-light">{{ $item->experience }}</h3>
+                            <p class="pt-3">{{ $item->title }}</p>
+                        </div>
+                    </div>
+                    @endforeach
 
-                    <div class="col-lg-4 col-6 mb-3 p-0">
-                        <div style="min-height: 177px;background: linear-gradient(45deg, #3857b5, #232e4f);color: white;"
-                            class="ps-1 pe-1 card-body me-2 service-box shadow text-center rounded">
-                            <h3 class="fw-bold text-light">12+</h3>
-                            <p class="pt-3"> Years of Preservation Service Expertise</p>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-4 col-6 mb-3 p-0">
-                        <div style="min-height: 177px;background: linear-gradient(45deg, #3857b5, #232e4f);color: white;"
-                            class="ps-1 pe-1 card-body me-2 service-box shadow text-center rounded">
-                            <h3 class="fw-bold text-light">5+</h3>
-                            <p class="pt-3"> Years of Web Development Experience</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-6 mb-3 p-0">
-                        <div style="min-height: 177px;background: linear-gradient(45deg, #3857b5, #232e4f);color: white;"
-                            class="ps-1 pe-1 card-body me-2 service-box shadow text-center rounded">
-                            <h3 class="fw-bold text-light">20+</h3>
-                            <p class="pt-3"> Skilled IT Experts</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-6 mb-3 p-0">
-                        <div style="min-height: 177px;background: linear-gradient(45deg, #3857b5, #232e4f);color: white;"
-                            class="ps-1 pe-1 card-body me-2 service-box shadow text-center rounded">
-                            <h3 class="fw-bold text-light">500+</h3>
-                            <p class="pt-3"> Satisfied Website Clients Experience with National
-                                Vendor Systems</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-6 mb-3 p-0">
-                        <div style="min-height: 177px;background: linear-gradient(45deg, #3857b5, #232e4f);color: white;"
-                            class="ps-1 pe-1 card-body me-2 service-box shadow text-center rounded">
-                            <h3 class="fw-bold text-light">80%</h3>
-                            <p class="pt-3"> Projects Delivered Before Deadline</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-6 mb-3 p-0">
-                        <div style="min-height: 177px;background: linear-gradient(45deg, #3857b5, #232e4f);color: white;"
-                            class="ps-1 pe-1 card-body me-2 service-box shadow text-center rounded">
-                            <h3 class="fw-bold text-light">99%</h3>
-                            <p class="pt-3"> Client Retention Rate</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-6 mb-3 p-0">
-                        <div style="min-height: 177px;background: linear-gradient(45deg, #3857b5, #232e4f);color: white;"
-                            class="ps-1 pe-1 card-body me-2 service-box shadow text-center rounded">
-                            <h3 class="fw-bold text-light">24/7</h3>
-                            <p class="pt-3"> Client Support</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-6 mb-3 p-0">
-                        <div style="min-height: 177px;background: linear-gradient(45deg, #3857b5, #232e4f);color: white;"
-                            class="ps-1 pe-1 card-body me-2 service-box shadow text-center rounded">
-                            <h3 class="fw-bold text-light">350k+</h3>
-                            <p class="pt-3"> Work Orders Processing Experience</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-6 mb-3 p-0">
-                        <div style="min-height: 177px;background: linear-gradient(45deg, #3857b5, #232e4f);color: white;"
-                            class="ps-1 pe-1 card-body me-2 service-box shadow text-center rounded">
-                            <h3 class="fw-bold text-light">350k+</h3>
-                            <p class="pt-3"> Work Orders Processing Experience</p>
-                        </div>
-                    </div>
                 </div>
 
             </div>

@@ -39,7 +39,7 @@ Team Create
 
                                 <div class="col-12 p-1 mb-3">
                                     <label for="bio" class="form-label">Bio</label>
-                                    <textarea name="bio" id="bio" class="form-control summernote  @error('bio') is-invalid @enderror" rows="4" placeholder="Enter Bio"></textarea>
+                                    <textarea name="bio" id="bio" class="form-control  @error('bio') is-invalid @enderror" rows="4" placeholder="Enter Bio"></textarea>
                                     @error('bio') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
 

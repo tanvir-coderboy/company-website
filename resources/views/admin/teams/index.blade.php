@@ -26,6 +26,8 @@ Team List
                                 <tr>
                                     <th>Sl</th>
                                     <th>Name</th>
+                                    <th>Designation</th>
+                                    <th>Bio</th>
                                     <th class="text-center">Image</th>
                                     <th class="text-center">Status</th>
                                     <th width="15%">Action</th>
@@ -36,6 +38,9 @@ Team List
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{$item->name }}</td>
+                                    <td>{{$item->designation }}</td>
+                                    <td>{{$item->bio }}</td>
+                                    
                                     <td class="text-center">
                                         @if($item->image)
                                         <div>

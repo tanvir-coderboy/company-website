@@ -10,7 +10,7 @@ Section Title Update
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 m-auto">
-                <form id="quickForm" action="{{ route('admin.section-title.update', $data->id) }}" method="POST">
+                <form id="quickForm" action="{{ route('admin.section-title.update', $data->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -108,6 +108,42 @@ Section Title Update
                                     @error('contact_description') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
 
+
+                                <div class="col-lg-12 p-1 mb-3">
+                                    <label for="team_title" class="form-label">Team Title</label>
+                                    <input type="text" name="team_title" id="team_title" value="{{ $data->team_title }}" class="form-control @error('team_title') is-invalid @enderror">
+                                    @error('team_title') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+
+
+                                <div class="col-lg-12 p-1 mb-3">
+                                    <label for="team_description" class="form-label">Team Description</label>
+                                    <textarea name="team_description" id="team_description" rows="3" class="form-control @error('team_description') is-invalid @enderror">{{ $data->team_description }}</textarea>
+                                    @error('team_description') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+
+
+                                <div class="col-lg-12 form-group">
+                                    <label for="chosse_image">Why Choose Image</label>
+                                    <input required value="{{$data->chosse_image}}" type="file" name="chosse_image" class="p-1 form-control @error('chosse_image') is-invalid @enderror" id="chosse_image">
+                                    @error('chosse_image')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                    @if($data->chosse_image)
+                                    <div class="mt-2">
+                                        <img id="preview-chosse_image" src="{{ Storage::url($data->chosse_image) }}"
+                                            alt="Current Profile Image" width="120" height="120" style="object-fit: cover; border-radius: 8px;">
+                                    </div>
+                                    @else
+                                    <div class="mt-2">
+                                        <img id="preview-chosse_image" src=""
+                                            alt="Current Profile Image" width="120" height="120" style="object-fit: cover; border-radius: 8px;display:none;">
+                                    </div>
+                                    @endif
+                                </div>
+
+
+
                             </div>
                         </div>
 
@@ -122,4 +158,27 @@ Section Title Update
     </div>
 </section>
 
+@endsection
+
+
+@section('script')
+<script>
+    document.getElementById('chosse_image').addEventListener('change', function(event) {
+        const preview = document.getElementById('preview-chosse_image');
+        const file = event.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+
+            reader.readAsDataURL(file);
+        } else {
+            preview.style.display = 'none';
+        }
+    });
+</script>
 @endsection

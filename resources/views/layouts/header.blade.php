@@ -22,9 +22,9 @@
                              <a href="#" class="dropdown-item">- Software Solutions</a>
                          </div>
                      </div>
-                     <a href="portfolio.html" class="nav-item nav-link">Portfolio</a>
+                     <a href="{{ route('portfolio') }}" class="nav-item nav-link">Portfolio</a>
                      <a href="faq.html" class="nav-item nav-link">FAQ</a>
-                     <a href="blog.html" class="nav-item nav-link">Blog</a>
+                     <a href="{{ route('blog') }}" class="nav-item nav-link">Blog</a>
                      <div class="nav-item dropdown me-4">
                          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Get In Touch</a>
                          <div class="dropdown-menu m-0">
