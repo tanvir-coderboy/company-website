@@ -31,7 +31,7 @@ $services = \App\Models\Service::where('status',1)->get();
                      <div class="nav-item dropdown me-4">
                          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Get In Touch</a>
                          <div class="dropdown-menu m-0">
-                             <a href="about.html" class="dropdown-item">- About Us</a>
+                             <a href="{{ route('about-us')}}" class="dropdown-item">- About Us</a>
                              <!-- <a href="ceo.html" class="dropdown-item">- Messege From CEO</a> -->
                              <a href="{{ route('page', ['slug' => 'career']) }}" class="dropdown-item">- Career</a>
                              <a href="{{route('contact')}}" class="dropdown-item">- Contact Us</a>

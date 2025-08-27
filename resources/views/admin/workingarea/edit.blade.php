@@ -10,7 +10,7 @@ Update About our WorkingArea
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 m-auto">
-                <form id="faqForm" action="{{ route('admin.workingarea.store') }}" method="PUT" enctype="multipart/form-data">
+                <form id="faqForm" action="{{ route('admin.workingarea.update',$data->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 

@@ -67,7 +67,7 @@ AboutUs Update
 
                                 <div class="col-lg-12">
                                     <label for="core_value_text" class="form-label">Core Value Text</label>
-                                    <textarea name="core_value_text" id="core_value_text" rows="3" class="form-control @error('core_value_text') is-invalid @enderror">{{ $data->core_value_text }}</textarea>
+                                    <textarea name="core_value_text" id="core_value_text" rows="3" class="form-control  @error('core_value_text') is-invalid @enderror">{{ $data->core_value_text }}</textarea>
                                     @error('core_value_text') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
 

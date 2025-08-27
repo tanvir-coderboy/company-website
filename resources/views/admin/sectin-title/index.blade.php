@@ -125,7 +125,7 @@ Section Title Update
 
                                 <div class="col-lg-12 form-group">
                                     <label for="chosse_image">Why Choose Image</label>
-                                    <input required value="{{$data->chosse_image}}" type="file" name="chosse_image" class="p-1 form-control @error('chosse_image') is-invalid @enderror" id="chosse_image">
+                                    <input value="{{$data->chosse_image}}" type="file" name="chosse_image" class="p-1 form-control @error('chosse_image') is-invalid @enderror" id="chosse_image">
                                     @error('chosse_image')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror

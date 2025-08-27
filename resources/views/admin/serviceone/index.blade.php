@@ -38,7 +38,7 @@ Website Design Service List
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{$item->service_type}}</td>
-                                    <td>{{$item->title }}</td>
+                                    <td>{{$item->name }}</td>
                                     <td>{{$item->serial }}</td>
 
                                     <td class="text-center">

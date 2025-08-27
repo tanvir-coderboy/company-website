@@ -54,8 +54,10 @@ Route::get('/blog', [WebsiteController::class, 'blog'])->name('blog');
 Route::get('/portfolio', [WebsiteController::class, 'portfolio'])->name('portfolio');
 Route::get('/faq', [WebsiteController::class, 'faq'])->name('faq');
 Route::get('/service/{title}', [WebsiteController::class, 'serviceSingle'])->name('service-single');
+Route::get('/about-us', [WebsiteController::class, 'aboutUs'])->name('about-us');
 
 Route::get('{slug}',[WebsiteController::class,'page'])->name('page');
+
 
 
 Auth::routes(['verify' => true]);

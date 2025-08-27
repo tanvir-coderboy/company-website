@@ -125,7 +125,7 @@ Settings Update
 
                                 <div class="col-lg-4 form-group">
                                     <label for="header_logo">Header Logo</label>
-                                    <input required value="{{$data->header_logo}}" type="file" name="header_logo" class="p-1 form-control @error('header_logo') is-invalid @enderror" id="header_logo">
+                                    <input  value="{{$data->header_logo}}" type="file" name="header_logo" class="p-1 form-control @error('header_logo') is-invalid @enderror" id="header_logo">
                                     @error('header_logo')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -143,7 +143,7 @@ Settings Update
                                 </div>
                                 <div class="col-lg-4 form-group">
                                     <label for="footer_logo">Footer Logo</label>
-                                    <input required value="{{$data->footer_logo}}" type="file" name="footer_logo" class="p-1 form-control @error('footer_logo') is-invalid @enderror" id="footer_logo">
+                                    <input  value="{{$data->footer_logo}}" type="file" name="footer_logo" class="p-1 form-control @error('footer_logo') is-invalid @enderror" id="footer_logo">
                                     @error('footer_logo')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
@@ -162,7 +162,7 @@ Settings Update
 
                                 <div class="col-lg-4 form-group">
                                     <label for="favicon">Favicon</label>
-                                    <input required value="{{$data->favicon}}" type="file" name="favicon" class="p-1 form-control @error('favicon') is-invalid @enderror" id="favicon">
+                                    <input  value="{{$data->favicon}}" type="file" name="favicon" class="p-1 form-control @error('favicon') is-invalid @enderror" id="favicon">
                                     @error('favicon')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AboutUs;
 use App\Models\Banner;
 use App\Models\Blog;
 use App\Models\Contact;
+use App\Models\CoreValue;
 use App\Models\Faq;
 use App\Models\FaqCategory;
 use App\Models\Page;
@@ -22,62 +24,70 @@ class WebsiteController extends Controller
     public function home()
     {
         $setting = Setting::first();
-        $banner = Banner::where('status',1)->first();
-        $welcome = Welcome::where('status',1)->first();
+        $banner = Banner::where('status', 1)->first();
+        $welcome = Welcome::where('status', 1)->first();
         $title = SectionTitle::first();
-        $services = Service::with('serviceItems')->where('status',1)->get();
-        $whychooses = WhyChoose::where('status',1)->get();
-        $blogs = Blog::where('status',1)->get();
-        $testimonials = Testimonial::where('status',1)->get();
-        return view('frontend.index', compact('setting','banner','welcome','title','services','whychooses','blogs','testimonials'));
+        $services = Service::with('serviceItems')->where('status', 1)->get();
+        $whychooses = WhyChoose::where('status', 1)->get();
+        $blogs = Blog::where('status', 1)->get();
+        $testimonials = Testimonial::where('status', 1)->get();
+        return view('frontend.index', compact('setting', 'banner', 'welcome', 'title', 'services', 'whychooses', 'blogs', 'testimonials'));
     }
     public function blog()
     {
-        $blogs = Blog::where('status',1)->get();
+        $blogs = Blog::where('status', 1)->get();
         $title = SectionTitle::first();
         $setting = Setting::first();
-        return view('frontend.blogs',compact('title','blogs','setting'));
+        return view('frontend.blogs', compact('title', 'blogs', 'setting'));
     }
 
     public function portfolio()
     {
-        $data = PortfolioCategory::with('portfolio')->where('status',1)->get();
-        $teams = Team::where('status',1)->get();
+        $data = PortfolioCategory::with('portfolio')->where('status', 1)->get();
+        $teams = Team::where('status', 1)->get();
         $title = SectionTitle::first();
         $setting = Setting::first();
-        return view('frontend.portfolio',compact('data','title','teams','setting'));
+        return view('frontend.portfolio', compact('data', 'title', 'teams', 'setting'));
     }
 
 
     public function faq()
     {
-        $data = FaqCategory::with('category')->where('status',1)->get();
-        $faqs = Faq::where('status',1)->get();
+        $data = FaqCategory::with('category')->where('status', 1)->get();
+        $faqs = Faq::where('status', 1)->get();
         $setting = Setting::first();
-        return view('frontend.faq',compact('data','faqs','setting'));
+        return view('frontend.faq', compact('data', 'faqs', 'setting'));
     }
 
     public function serviceSingle($title)
     {
-        $service = Service::where('title',$title)->firstOrFail();
-        return view('frontend.service-signle',compact('service'));
+        $service = Service::where('title', $title)->firstOrFail();
+        return view('frontend.service-signle', compact('service'));
     }
 
 
-     public function contact()
+    public function contact()
     {
-        $data = Contact::where('status',1)->get();
+        $data = Contact::where('status', 1)->get();
         $title = SectionTitle::first();
         $setting = Setting::first();
-        return view('frontend.contact',compact('data','title','setting'));
+        return view('frontend.contact', compact('data', 'title', 'setting'));
     }
 
     public function page($slug)
     {
-        $page = Page::where('slug',$slug)->firstOrFail();
+        $page = Page::where('slug', $slug)->firstOrFail();
         $setting = Setting::first();
-        return view('frontend.page',compact('page','setting'));
+        return view('frontend.page', compact('page', 'setting'));
     }
 
 
+    public function aboutUs()
+    {
+        $about = AboutUs::first();
+        $setting = Setting::first();
+        $core = CoreValue::where('status', 1)->get();
+
+        return view('frontend.about', compact('about', 'setting', 'core'));
+    }
 }

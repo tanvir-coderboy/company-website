@@ -33,9 +33,7 @@ class CoreValueController extends Controller
     public function store(Request $request)
     {
 
-        $data = $request->only([
-            'title','serial','description','meta_title','meta_description','meta_keyword','status'
-        ]);
+        $data = $request->all();
 
         // Image Upload
         $data['image'] = $request->hasFile('image') ? ImageHelper::uploadImage($request->file('image')) : null;
@@ -71,9 +69,7 @@ class CoreValueController extends Controller
     {
         $data = CoreValue::findOrFail($id);
 
-        $update = $request->only([
-            'title','serial','description','meta_title','meta_description','meta_keyword','status'
-        ]);
+        $update = $request->all();
 
         // Image Upload
         if ($request->hasFile('image')) {

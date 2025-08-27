@@ -40,7 +40,7 @@ Add Core Value
 
                             <div class="form-group col-12 mb-3">
                                 <label for="description">Description</label>
-                                <textarea id="description" name="description" class="form-control summernote @error('description') is-invalid @enderror" rows="4" placeholder="Description"> </textarea>
+                                <textarea id="description" name="description" class="form-control  @error('description') is-invalid @enderror" rows="4" placeholder="Description"> </textarea>
                                 @error('description')<span class="text-danger">{{ $message }}</span>@enderror
                             </div>
 

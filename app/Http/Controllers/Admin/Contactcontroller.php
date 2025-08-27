@@ -40,7 +40,7 @@ class ContactController extends Controller
         'status'
     ]));
 
-    return redirect()->route('admin.contacts.index')->with('success','Data Created Successfully');
+    return redirect()->back()->with('success','Data Created Successfully');
 }
 
 
