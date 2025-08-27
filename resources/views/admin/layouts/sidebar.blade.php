@@ -73,7 +73,71 @@
                             </a>
                         </li>
 
-                       
+
+                    </ul>
+                </li>
+                @endcan
+
+
+
+                @can('view setting')
+                <li class="nav-item has-treeview {{ Route::is('admin.serviceone.*') || Route::is('admin.servicethree.*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-concierge-bell"></i>
+                        <p>
+                            Services Type
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.serviceone.index') }}" class="nav-link {{ Route::is('admin.serviceone.*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> Website Design</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.servicethree.index') }}" class="nav-link {{ Route::is('admin.servicethree.*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Cloud Web Hosting</p>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </li>
+                @endcan
+
+
+
+                 @can('view setting')
+                <li class="nav-item has-treeview {{ Route::is('admin.servicetwo.*') || Route::is('admin.workingarea.*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-concierge-bell"></i>
+                        <p>
+                            Services Property
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.servicetwo.index') }}" class="nav-link {{ Route::is('admin.servicetwo.*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> Property Processing</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.workingarea.index') }}" class="nav-link {{ Route::is('admin.workingarea.*') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Working Area</p>
+                            </a>
+                        </li>
+
+
                     </ul>
                 </li>
                 @endcan
@@ -189,7 +253,7 @@
 
 
 
-                       @can('view setting')
+                @can('view setting')
                 <li class="nav-item">
                     <a href="{{ route('admin.cores.index') }}" class="nav-link {{ Route::is('admin.cores.*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-bullseye"></i>
@@ -208,7 +272,7 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        
+
                         <li class="nav-item">
                             <a href="{{ route('admin.faq-categories.index') }}"
                                 class="nav-link {{ Route::is('admin.faq-categories.*') ? 'active' : '' }}">
@@ -231,7 +295,7 @@
 
 
 
-                 <!-- Role Managment  -->
+                <!-- Role Managment  -->
                 @can(['view role','view user'])
                 <li class="nav-item {{ Route::is('admin.roles.*') || Route::is('admin.users.*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">

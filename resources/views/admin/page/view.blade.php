@@ -42,7 +42,7 @@ Update Page
                             {{-- Description --}}
                             <div class="form-group col-12 mb-3">
                                 <label for="description">Description</label>
-                                <textarea id="description" name="description" class="form-control" rows="5" placeholder="Description">{!!$data->description!!}</textarea>
+                                <textarea id="description" name="description" class="form-control summernote" rows="5" placeholder="Description">{!!$data->description!!}</textarea>
                                 @error('description')<span class="text-danger">{{ $message }}</span>@enderror
                             </div>
 

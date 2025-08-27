@@ -34,8 +34,8 @@ Update Service
 
 
                                 <div class="col-12 form-group">
-                                    <label for="company_name">Description<span class="text-danger">*</span></label>
-                                    <textarea name="description" rows="4" class="form-control summernote @error('description') is-invalid @enderror" id="description"> {!!$data->description!!}</textarea>
+                                    <label for="company_name">Description</label>
+                                    <textarea name="description" rows="4" class="form-control @error('description') is-invalid @enderror" id="description"> {!!$data->description!!}</textarea>
                                     @error('description')
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror

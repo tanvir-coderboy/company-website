@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use App\Models\Blog;
+use App\Models\Contact;
+use App\Models\Faq;
+use App\Models\FaqCategory;
+use App\Models\Page;
 use App\Models\PortfolioCategory;
 use App\Models\SectionTitle;
 use App\Models\Service;
@@ -27,11 +31,6 @@ class WebsiteController extends Controller
         $testimonials = Testimonial::where('status',1)->get();
         return view('frontend.index', compact('setting','banner','welcome','title','services','whychooses','blogs','testimonials'));
     }
-
-    public function contact()
-    {
-        return 'Contact';
-    }
     public function blog()
     {
         $blogs = Blog::where('status',1)->get();
@@ -47,6 +46,37 @@ class WebsiteController extends Controller
         $title = SectionTitle::first();
         $setting = Setting::first();
         return view('frontend.portfolio',compact('data','title','teams','setting'));
+    }
+
+
+    public function faq()
+    {
+        $data = FaqCategory::with('category')->where('status',1)->get();
+        $faqs = Faq::where('status',1)->get();
+        $setting = Setting::first();
+        return view('frontend.faq',compact('data','faqs','setting'));
+    }
+
+    public function serviceSingle($title)
+    {
+        $service = Service::where('title',$title)->firstOrFail();
+        return view('frontend.service-signle',compact('service'));
+    }
+
+
+     public function contact()
+    {
+        $data = Contact::where('status',1)->get();
+        $title = SectionTitle::first();
+        $setting = Setting::first();
+        return view('frontend.contact',compact('data','title','setting'));
+    }
+
+    public function page($slug)
+    {
+        $page = Page::where('slug',$slug)->firstOrFail();
+        $setting = Setting::first();
+        return view('frontend.page',compact('page','setting'));
     }
 
 

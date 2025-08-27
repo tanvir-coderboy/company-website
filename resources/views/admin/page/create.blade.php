@@ -38,7 +38,7 @@ Add Page
 
                             <div class="form-group col-12 mb-3">
                                 <label>Description</label>
-                                <textarea name="description" class="form-control" rows="5" placeholder="Description">{{ old('description') }}</textarea>
+                                <textarea name="description" class="form-control summernote" rows="5" placeholder="Description">{{ old('description') }}</textarea>
                                 @error('description')<span class="text-danger">{{ $message }}</span>@enderror
                             </div>
 

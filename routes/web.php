@@ -16,18 +16,18 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SectionTitleController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ServiceItemController;
+use App\Http\Controllers\Admin\ServiceOneController;
+use App\Http\Controllers\Admin\ServiceThreeController;
+use App\Http\Controllers\Admin\ServiceTwoController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WelcomeController;
 use App\Http\Controllers\Admin\WhyChooseController;
+use App\Http\Controllers\Admin\WorkingAreaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WebsiteController;
-use App\Models\Blog;
-use App\Models\Portfolio;
-use App\Models\PortfolioCategory;
-use App\Models\WhyChoose;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Artisan;
@@ -52,7 +52,10 @@ Route::get('/', [WebsiteController::class, 'home'])->name('index');
 Route::get('/contact', [WebsiteController::class, 'contact'])->name('contact');
 Route::get('/blog', [WebsiteController::class, 'blog'])->name('blog');
 Route::get('/portfolio', [WebsiteController::class, 'portfolio'])->name('portfolio');
+Route::get('/faq', [WebsiteController::class, 'faq'])->name('faq');
+Route::get('/service/{title}', [WebsiteController::class, 'serviceSingle'])->name('service-single');
 
+Route::get('{slug}',[WebsiteController::class,'page'])->name('page');
 
 
 Auth::routes(['verify' => true]);
@@ -164,6 +167,21 @@ Route::prefix('admin')
         // Testimonial
         Route::resource('testimonials', TestimonialController::class);
         Route::post('testimonials/status-update', [TestimonialController::class, 'updateStatus'])->name('testimonials.status.update');
+
+
+        // Service Work//
+        Route::resource('serviceone', ServiceOneController::class,);
+        Route::post('serviceone/status-update', [ServiceOneController::class, 'updateStatus'])->name('serviceone.status.update');
+
+        Route::resource('servicetwo', ServiceTwoController::class,);
+        Route::post('servicetwo/status-update', [ServiceTwoController::class, 'updateStatus'])->name('servicetwo.status.update');
+
+        Route::resource('servicethree', ServiceThreeController::class,);
+        Route::post('servicethree/status-update', [ServiceThreeController::class, 'updateStatus'])->name('servicethree.status.update');
+
+        Route::resource('workingarea', WorkingAreaController::class,);
+        Route::post('workingarea/status-update', [WorkingAreaController::class, 'updateStatus'])->name('workingarea.status.update');
+
 
     });
 

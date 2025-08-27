@@ -1,4 +1,8 @@
- <!-- Navbar & Hero Start -->
+@php 
+$services = \App\Models\Service::where('status',1)->get();
+@endphp
+
+<!-- Navbar & Hero Start -->
  <div class="container-fluid position-relative p-0">
      <!-- <nav class="navbar navbar-expand-lg navbar-light bg-white px-4 px-lg-5 py-3 py-lg-0"> -->
      <div class="d-lg-block d-none" id="sticky-header">
@@ -16,22 +20,21 @@
                      <div class="nav-item dropdown">
                          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Services</a>
                          <div class="dropdown-menu m-0">
-                             <a href="web-design.html" class="dropdown-item">- Website Design & Development</a>
-                             <a href="property.html" class="dropdown-item">- Property Preservation Processing</a>
-                             <a href="cloud.html" class="dropdown-item">- Cloud Web Hosting</a>
-                             <a href="#" class="dropdown-item">- Software Solutions</a>
+                            @foreach($services as $item)
+                             <a href="{{ route('service-single',$item->title) }}" class="dropdown-item">- {{ $item->title }}</a>
+                             @endforeach
                          </div>
                      </div>
                      <a href="{{ route('portfolio') }}" class="nav-item nav-link">Portfolio</a>
-                     <a href="faq.html" class="nav-item nav-link">FAQ</a>
+                     <a href="{{route('faq')}}" class="nav-item nav-link">FAQ</a>
                      <a href="{{ route('blog') }}" class="nav-item nav-link">Blog</a>
                      <div class="nav-item dropdown me-4">
                          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Get In Touch</a>
                          <div class="dropdown-menu m-0">
                              <a href="about.html" class="dropdown-item">- About Us</a>
                              <!-- <a href="ceo.html" class="dropdown-item">- Messege From CEO</a> -->
-                             <a href="carrer.html" class="dropdown-item">- Career</a>
-                             <a href="contact.html" class="dropdown-item">- Contact Us</a>
+                             <a href="{{ route('page', ['slug' => 'career']) }}" class="dropdown-item">- Career</a>
+                             <a href="{{route('contact')}}" class="dropdown-item">- Contact Us</a>
                          </div>
                      </div>
                  </div>
