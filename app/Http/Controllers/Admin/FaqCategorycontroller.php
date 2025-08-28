@@ -10,6 +10,15 @@ use Illuminate\Support\Facades\Storage;
 
 class FaqCategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view faq-category')->only('index');
+        $this->middleware('permission:create faq-category')->only(['create', 'store']);
+        $this->middleware('permission:edit faq-category')->only(['edit', 'update']);
+        $this->middleware('permission:delete faq-category')->only('destroy');
+    }
+
+    
     /**
      * Display a listing of the resource.
      */

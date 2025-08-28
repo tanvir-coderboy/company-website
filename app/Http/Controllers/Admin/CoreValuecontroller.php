@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Storage;
 
 class CoreValueController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:view about')->only('index');
+        $this->middleware('permission:create about')->only(['create', 'store']);
+        $this->middleware('permission:edit about')->only(['edit', 'update']);
+        $this->middleware('permission:delete about')->only('destroy');
+    }
+
+    
     /**
      * Display a listing of the resource.
      */

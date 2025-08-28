@@ -26,7 +26,7 @@ Website Design Service List
                                 <tr>
                                     <th>Sl</th>
                                     <th>Service Type</th>
-                                    <th>Title</th>
+                                    <th>Name</th>
                                     <th>Serial</th>
                                     <th class="text-center">Image</th>
                                     <th class="text-center">Status</th>

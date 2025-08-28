@@ -13,11 +13,13 @@ use App\Models\Page;
 use App\Models\PortfolioCategory;
 use App\Models\SectionTitle;
 use App\Models\Service;
+use App\Models\ServiceOne;
 use App\Models\Setting;
 use App\Models\Team;
 use App\Models\Testimonial;
 use App\Models\Welcome;
 use App\Models\WhyChoose;
+use Illuminate\Http\Request;
 
 class WebsiteController extends Controller
 {
@@ -62,7 +64,10 @@ class WebsiteController extends Controller
     public function serviceSingle($title)
     {
         $service = Service::where('title', $title)->firstOrFail();
-        return view('frontend.service-signle', compact('service'));
+        $tools = ServiceOne::where('status',1)->where('service_type','Tools & Technologies')->get();
+        $process = ServiceOne::where('status',1)->where('service_type','Our Process')->get();
+        $webbuild = ServiceOne::where('status',1)->where('service_type','Types of Websites We Build')->get();
+        return view('frontend.service-signle', compact('service','tools','process','webbuild'));
     }
 
 
@@ -72,6 +77,14 @@ class WebsiteController extends Controller
         $title = SectionTitle::first();
         $setting = Setting::first();
         return view('frontend.contact', compact('data', 'title', 'setting'));
+    }
+
+    public function contactStore(Request $request)
+    {
+        $data = $request->all();
+        $data['status'] = '0';
+        Contact::create($data);
+        return back()->with('success','Your Contact Sudmission Successfully');
     }
 
     public function page($slug)

@@ -29,18 +29,18 @@ Website Design Service Create
                                     <select name="service_type" id="service_type" class="form-control">
                                         <option value="Tools & Technologies">Tools & Technologies</option>
                                         <option value="Our Process">Our Process</option>
-                                        <option value=" Types of Websites We Build"> Types of Websites We Build</option>
+                                        <option value="Types of Websites We Build"> Types of Websites We Build</option>
                                     </select>
                                     @error('service_type') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
 
 
 
-                                <div class="col-6 p-1 mb-3">
+                                <!-- <div class="col-6 p-1 mb-3">
                                     <label for="title" class="form-label"> Section Title</label>
                                     <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="Enter Title">
                                     @error('title') <span class="text-danger">{{ $message }}</span> @enderror
-                                </div>
+                                </div> -->
 
 
                                 <div class="col-6 p-1 mb-3">
@@ -49,7 +49,6 @@ Website Design Service Create
                                     @error('name') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
 
-
                                 <div class="col-6 p-1 mb-3">
                                     <label for="serial" class="form-label">Serial</label>
                                     <input type="number" name="serial" id="serial" class="form-control @error('serial') is-invalid @enderror" placeholder="Enter serial">
@@ -57,18 +56,25 @@ Website Design Service Create
                                 </div>
 
 
-                                <div class="col-12 p-1 mb-3">
+                                <div class="col-6 p-1 mb-3">
+                                    <label for="short_description" class="form-label">Description</label>
+                                    <input type="text" name="short_description" id="short_description" class="form-control @error('short_description') is-invalid @enderror">
+                                    @error('short_description') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+
+
+                                <!-- <div class="col-12 p-1 mb-3">
                                     <label for="description" class="form-label"> Section Description</label>
                                     <textarea name="description" id="description" rows="3" class="form-control @error('description') is-invalid @enderror" placeholder="Enter Description"></textarea>
                                     @error('description') <span class="text-danger">{{ $message }}</span> @enderror
-                                </div>
+                                </div> -->
 
 
-                                <div class="col-12 p-1 mb-3">
+                                <!-- <div class="col-12 p-1 mb-3">
                                     <label for="short_description" class="form-label"> Description</label>
                                     <textarea name="short_description" id="short_description" rows="3" class="form-control @error('short_description') is-invalid @enderror" placeholder="Enter Short Description"></textarea>
                                     @error('short_description') <span class="text-danger">{{ $message }}</span> @enderror
-                                </div>
+                                </div> -->
 
 
 

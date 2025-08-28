@@ -10,7 +10,7 @@
     </div>
 </div>
 
-@if($service->title=='Website Design & Development')
+@if($service->title=='Web Design & Development Services')
 <div class="container-fluid about bg-light py-5">
     <div class="container py-5">
         <div class="row g-5 align-items-center pb-5">
@@ -25,101 +25,18 @@
 
         </div>
         <div class="row g-4">
+            @foreach($tools as $item)
             <div class="col-md-4 col-lg-3">
                 <div class="tool-card">
-                    <div class="tool-icon"><i class="fab fa-wordpress"></i></div>
-                    <div class="tool-title">WordPress</div>
-                    <div class="tool-desc">CMS for custom, responsive websites</div>
+                    <div class="tool-icon">
+                        <img src="{{ Storage::url($item->image) }}" alt="{{ $item->name }}" class="w-25">
+                    </div>
+                    <div class="tool-title">{{ $item->name }}</div>
+                    <div class="tool-desc">{{ $item->short_description }}</div>
                 </div>
             </div>
+            @endforeach
 
-            <div class="col-md-4 col-lg-3">
-                <div class="tool-card">
-                    <div class="tool-icon"><i class="fab fa-php"></i></div>
-                    <div class="tool-title">PHP</div>
-                    <div class="tool-desc">Backend scripting for dynamic apps</div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-lg-3">
-                <div class="tool-card">
-                    <div class="tool-icon"><i class="fas fa-database"></i></div>
-                    <div class="tool-title">MySQL</div>
-                    <div class="tool-desc">Reliable database management</div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-lg-3">
-                <div class="tool-card">
-                    <div class="tool-icon"><i class="fab fa-html5"></i> <i class="fab fa-css3-alt"></i></div>
-                    <div class="tool-title">HTML5 / CSS3</div>
-                    <div class="tool-desc">Structure and styling for layouts</div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-lg-3">
-                <div class="tool-card">
-                    <div class="tool-icon"><i class="fab fa-js-square"></i></div>
-                    <div class="tool-title">JavaScript / jQuery</div>
-                    <div class="tool-desc">Interactive and real-time features</div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-lg-3">
-                <div class="tool-card">
-                    <div class="tool-icon"><i class="fab fa-bootstrap"></i></div>
-                    <div class="tool-title">Bootstrap</div>
-                    <div class="tool-desc">Mobile-first front-end framework</div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-lg-3">
-                <div class="tool-card">
-                    <div class="tool-icon"><i class="fas fa-shopping-cart"></i></div>
-                    <div class="tool-title">WooCommerce</div>
-                    <div class="tool-desc">E-commerce solution for WordPress</div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-lg-3">
-                <div class="tool-card">
-                    <div class="tool-icon"><i class="fas fa-object-group"></i></div>
-                    <div class="tool-title">Elementor / WPBakery</div>
-                    <div class="tool-desc">Drag-and-drop page builders</div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-lg-3">
-                <div class="tool-card">
-                    <div class="tool-icon"><i class="fas fa-server"></i></div>
-                    <div class="tool-title">cPanel / WHM</div>
-                    <div class="tool-desc">Hosting and server management</div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-lg-3">
-                <div class="tool-card">
-                    <div class="tool-icon"><i class="fab fa-git-alt"></i></div>
-                    <div class="tool-title">Git / GitHub</div>
-                    <div class="tool-desc">Version control & collaboration</div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-lg-3">
-                <div class="tool-card">
-                    <div class="tool-icon"><i class="fas fa-laptop-code"></i></div>
-                    <div class="tool-title">XAMPP / LocalWP</div>
-                    <div class="tool-desc">Local development tools</div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-lg-3">
-                <div class="tool-card">
-                    <div class="tool-icon"><i class="fab fa-google"></i></div>
-                    <div class="tool-title">Google Analytics</div>
-                    <div class="tool-desc">Performance & SEO tracking</div>
-                </div>
-            </div>
         </div>
 
     </div>
@@ -136,36 +53,15 @@
                 businesses and individuals.</p>
         </div>
         <div class="row g-4 justify-content-center text-center">
+            @foreach($process as $item)
             <div class="col-6 col-md-4 col-lg-2">
                 <div class="service-step d-flex flex-column align-items-center justify-content-center">
-                    <i class="fas fa-image"></i>
-                    <h5>Planning</h5>
+                    <img src="{{ Storage::url($item->image) }}" alt="{{ $item->name }}" class="w-25">
+                    <h5 class="mt-2">{{ $item->name }}</h5>
                 </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="service-step d-flex flex-column align-items-center justify-content-center">
-                    <i class="fas fa-pencil-ruler"></i>
-                    <h5>Design</h5>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="service-step d-flex flex-column align-items-center justify-content-center">
-                    <i class="fas fa-tasks"></i>
-                    <h5>Development</h5>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="service-step d-flex flex-column align-items-center justify-content-center">
-                    <i class="fas fa-code"></i>
-                    <h5>Optimization</h5>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="service-step d-flex flex-column align-items-center justify-content-center">
-                    <i class="fas fa-rocket"></i>
-                    <h5>Launch</h5>
-                </div>
-            </div>
+            @endforeach
+           
         </div>
     </div>
 </section>
@@ -185,104 +81,24 @@
 
         </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+        @foreach($webbuild as $item)
             <div class="col">
                 <div class="card h-100">
                     <div class="card-body">
-                        <i class="bi bi-cart4 card-icon"></i>
-                        <h5 class="card-title">E-commerce Websites</h5>
-                        <p class="card-text">Fully functional online stores with shopping carts, payment gateways,
-                            product filters, inventory control, and customer management.</p>
+                        <img src="{{ Storage::url($item->image) }}" alt="{{ $item->name }}" class="w-25">
+                        <h5 class="card-title">{{ $item->name }}</h5>
+                        <p class="card-text">{{ $item->short_description }}</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <i class="bi bi-briefcase card-icon"></i>
-                        <h5 class="card-title">Business Websites</h5>
-                        <p class="card-text">Professional websites for companies to showcase services, team, contact
-                            info, and company profile.</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
 
-            <div class="col">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <i class="bi bi-newspaper card-icon"></i>
-                        <h5 class="card-title">Blog & News Websites</h5>
-                        <p class="card-text">Custom blog platforms or news portals with category filters, social
-                            sharing, and engaging content layout.</p>
-                    </div>
-                </div>
-            </div>
+           
 
-            <div class="col">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <i class="bi bi-house-door card-icon"></i>
-                        <h5 class="card-title">Educational Websites</h5>
-                        <p class="card-text">Websites for schools, coaching centers, or online courses (LMS
-                            integration), with class schedules, student portals, and video content.</p>
-                    </div>
-                </div>
-            </div>
+           
 
-            <div class="col">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <i class="bi bi-house-door-fill card-icon"></i>
-                        <h5 class="card-title">Real Estate Websites</h5>
-                        <p class="card-text">Property listing websites with map integration, property filters, agent
-                            profiles, and inquiry forms.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <i class="bi bi-calendar-check card-icon"></i>
-                        <h5 class="card-title">Booking & Appointment Websites</h5>
-                        <p class="card-text">For clinics, salons, consultants, or event planners—with calendar
-                            integration and online booking.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <i class="bi bi-person-badge card-icon"></i>
-                        <h5 class="card-title">Portfolio Websites</h5>
-                        <p class="card-text">Designed for creatives, professionals, or agencies to showcase their
-                            work in an elegant, structured layout.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <i class="bi bi-puzzle card-icon"></i>
-                        <h5 class="card-title">Custom Web Portals</h5>
-                        <p class="card-text">Tailored solutions like job portals, service dashboards,
-                            membership-based websites, or internal tools.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <i class="bi bi-puzzle card-icon"></i>
-                        <h5 class="card-title">Landing Page Websites</h5>
-                        <p class="card-text"> Single-page sites focused on conversions, with call-to-action buttons,
-                            lead forms, fast loading, and mobile-friendly design.</p>
-                    </div>
-                </div>
-            </div>
 
 
         </div>
@@ -290,7 +106,7 @@
     </div>
 </div>
 
-@elseif($service->title=='Property Preservation Processing')
+@elseif($service->title=='Property Preservation Work Orders Processing')
 <div class="container-fluid about bg-light py-5">
     <div class="container py-5">
 

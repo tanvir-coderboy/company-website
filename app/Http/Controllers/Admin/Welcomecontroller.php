@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Storage;
 
 class WelcomeController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:view welcome')->only('index');
+        $this->middleware('permission:create welcome')->only(['create', 'store']);
+        $this->middleware('permission:edit welcome')->only(['edit', 'update']);
+        $this->middleware('permission:delete welcome')->only('destroy');
+    }
+
+    
     /**
      * Display a listing of the resource.
      */

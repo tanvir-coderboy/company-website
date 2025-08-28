@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:view blog')->only('index');
+        $this->middleware('permission:create blog')->only(['create', 'store']);
+        $this->middleware('permission:edit blog')->only(['edit', 'update']);
+        $this->middleware('permission:delete blog')->only('destroy');
+    }
+
+    
     /**
      * Display a listing of the resource.
      */

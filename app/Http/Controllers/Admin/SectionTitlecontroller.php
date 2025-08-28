@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Storage;
 
 class SectionTitleController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:view section-title')->only('index');
+        $this->middleware('permission:create section-title')->only(['create', 'store']);
+        $this->middleware('permission:edit section-title')->only(['edit', 'update']);
+        $this->middleware('permission:delete section-title')->only('destroy');
+    }
+
+    
     /**
      * Display a listing of the resource.
      */

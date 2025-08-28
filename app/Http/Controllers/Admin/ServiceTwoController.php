@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 
 class ServiceTwoController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:view service')->only('index');
+        $this->middleware('permission:create service')->only(['create', 'store']);
+        $this->middleware('permission:edit service')->only(['edit', 'update']);
+        $this->middleware('permission:delete service')->only('destroy');
+    }
+
+    
     /**
      * Display a listing of the resource.
      */

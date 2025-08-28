@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Storage;
 
 class TeamController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('permission:view team')->only('index');
+        $this->middleware('permission:create team')->only(['create', 'store']);
+        $this->middleware('permission:edit team')->only(['edit', 'update']);
+        $this->middleware('permission:delete team')->only('destroy');
+    }
+
+    
     /**
      * Display a listing of the resource.
      */

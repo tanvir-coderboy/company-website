@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class PortfolioCategoryController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:view portfolio-category')->only('index');
+        $this->middleware('permission:create portfolio-category')->only(['create', 'store']);
+        $this->middleware('permission:edit portfolio-category')->only(['edit', 'update']);
+        $this->middleware('permission:delete portfolio-category')->only('destroy');
+    }
+    
     /**
      * Display a listing of the resource.
      */

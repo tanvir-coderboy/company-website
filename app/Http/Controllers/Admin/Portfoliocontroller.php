@@ -11,6 +11,16 @@ use Illuminate\Support\Facades\Storage;
 
 class PortfolioController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:view portfolio')->only('index');
+        $this->middleware('permission:create portfolio')->only(['create', 'store']);
+        $this->middleware('permission:edit portfolio')->only(['edit', 'update']);
+        $this->middleware('permission:delete portfolio')->only('destroy');
+    }
+
+    
     /**
      * Display a listing of the resource.
      */

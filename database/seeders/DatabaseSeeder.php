@@ -45,7 +45,10 @@ class DatabaseSeeder extends Seeder
 
         // Define all permissions
         $permissions = [
+            'create dashboard',
+            'edit dashboard',
             'view dashboard',
+            'delete dashboard',
 
             // role permissions
             'create role',
@@ -65,6 +68,114 @@ class DatabaseSeeder extends Seeder
             'edit user',
             'view user',
             'delete user',
+
+
+            // banner permissions
+            'create banner',
+            'edit banner',
+            'view banner',
+            'delete banner',
+
+            // about permissions
+            'create about',
+            'edit about',
+            'view about',
+            'delete about',
+
+
+            // service permissions
+            'create service',
+            'edit service',
+            'view service',
+            'delete service',
+
+
+            // service-item permissions
+            'create service-item',
+            'edit service-item',
+            'view service-item',
+            'delete service-item',
+
+
+            // portfolio-category permissions
+            'create portfolio-category',
+            'edit portfolio-category',
+            'view portfolio-category',
+            'delete portfolio-category',
+
+
+            // portfolio permissions
+            'create portfolio',
+            'edit portfolio',
+            'view portfolio',
+            'delete portfolio',
+
+
+            // blog permissions
+            'create blog',
+            'edit blog',
+            'view blog',
+            'delete blog',
+
+            // testimonial permissions
+            'create testimonial',
+            'edit testimonial',
+            'view testimonial',
+            'delete testimonial',
+
+            // team permissions
+            'create team',
+            'edit team',
+            'view team',
+            'delete team',
+
+
+            // contact permissions
+            'create contact',
+            'edit contact',
+            'view contact',
+            'delete contact',
+
+
+            // page permissions
+            'create page',
+            'edit page',
+            'view page',
+            'delete page',
+
+            // welcome permissions
+            'create welcome',
+            'edit welcome',
+            'view welcome',
+            'delete welcome',
+
+
+            // whychoose permissions
+            'create whychoose',
+            'edit whychoose',
+            'view whychoose',
+            'delete whychoose',
+
+
+            // faq-category permissions
+            'create faq-category',
+            'edit faq-category',
+            'view faq-category',
+            'delete faq-category',
+
+
+            // faq permissions
+            'create faq',
+            'edit faq',
+            'view faq',
+            'delete faq',
+
+
+            // section-title permissions
+            'create section-title',
+            'edit section-title',
+            'view section-title',
+            'delete section-title',
 
 
             // setting permissions

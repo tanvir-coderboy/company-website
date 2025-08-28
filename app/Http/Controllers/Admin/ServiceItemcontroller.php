@@ -11,6 +11,16 @@ use Illuminate\Support\Facades\Storage;
 
 class ServiceItemController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:view service-item')->only('index');
+        $this->middleware('permission:create service-item')->only(['create', 'store']);
+        $this->middleware('permission:edit service-item')->only(['edit', 'update']);
+        $this->middleware('permission:delete service-item')->only('destroy');
+    }
+
+    
     /**
      * Display a listing of the resource.
      */

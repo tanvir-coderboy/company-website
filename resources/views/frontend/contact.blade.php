@@ -85,19 +85,19 @@
                 <p class="mb-4 text-white">The contact form is currently inactive. Get a functional and working
                     contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code
                     and you're done.</p>
-                <form action="{{ route('admin.contacts.store') }}" method="POST">
+                <form action="{{ route('contacts.store') }}" method="POST">
                     @csrf
                     <div class="row g-3">
                         <div class="col-lg-12 col-xl-6">
                             <div class="form-floating">
-                                <select name="reaching_out_for" class="form-select bg-transparent border border-white"
+                                <select name="reaching" class="form-select bg-transparent border border-white"
                                     style="background-color: #1f1f1f !important;">
                                     <option value="Email">Email</option>
                                     <option value="Phone">Phone</option>
                                     <option value="Address">Address</option>
                                     <option value="Message">Message</option>
                                 </select>
-                                <label for="reaching_out_for">Reaching Out For</label>
+                                <label for="reaching">Reaching Out For</label>
                             </div>
                         </div>
 

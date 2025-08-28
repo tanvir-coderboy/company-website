@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Storage;
 
 class WhyChooseController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:view whychoose')->only('index');
+        $this->middleware('permission:create whychoose')->only(['create', 'store']);
+        $this->middleware('permission:edit whychoose')->only(['edit', 'update']);
+        $this->middleware('permission:delete whychoose')->only('destroy');
+    }
+
+    
     /**
      * Display a listing of the resource.
      */

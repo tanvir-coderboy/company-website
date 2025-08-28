@@ -50,6 +50,7 @@ Route::get('/cmd', function () {
 
 Route::get('/', [WebsiteController::class, 'home'])->name('index');
 Route::get('/contact', [WebsiteController::class, 'contact'])->name('contact');
+Route::post('/contact', [WebsiteController::class, 'contactStore'])->name('contacts.store');
 Route::get('/blog', [WebsiteController::class, 'blog'])->name('blog');
 Route::get('/portfolio', [WebsiteController::class, 'portfolio'])->name('portfolio');
 Route::get('/faq', [WebsiteController::class, 'faq'])->name('faq');

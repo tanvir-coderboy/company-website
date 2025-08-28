@@ -38,6 +38,7 @@ $setting = \App\Models\Setting::first();
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href="{{ asset('frontend') }}/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
     <link href="{{ asset('frontend') }}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="{{ asset('frontend') }}/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('frontend') }}/css/style.css" rel="stylesheet">
@@ -103,6 +104,7 @@ $setting = \App\Models\Setting::first();
     <script src="{{ asset('frontend') }}/lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 
@@ -141,7 +143,23 @@ $setting = \App\Models\Setting::first();
         });
     </script>
 
-
+@if(session('success'))
+    <script>
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'success',
+            title: "{{ session('success') }}",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
+    </script>
+    @endif
 
     <script>
         const faqs = document.querySelectorAll('.faq');

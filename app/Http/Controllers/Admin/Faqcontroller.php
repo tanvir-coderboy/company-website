@@ -11,6 +11,16 @@ use Illuminate\Support\Facades\Storage;
 
 class FaqController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:view faq')->only('index');
+        $this->middleware('permission:create faq')->only(['create', 'store']);
+        $this->middleware('permission:edit faq')->only(['edit', 'update']);
+        $this->middleware('permission:delete faq')->only('destroy');
+    }
+
+    
     /**
      * Display a listing of the resource.
      */

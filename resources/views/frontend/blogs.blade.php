@@ -16,14 +16,15 @@
 
 
 
-<!-- About Start -->
-<div class="container-fluid about bg-light py-5">
+<!-- Blog Start -->
+<div class="container-fluid bg-light service py-5">
     <div class="container py-5">
         <div class="section-title mb-5 wow fadeInUp" data-wow-delay="0.2s">
             <div class="sub-style">
-                <h4 class="sub-title px-3 mb-0 display-3">{{ $title->blog_title }}</h4>
+                <h4 class="sub-title display-3 px-3 mb-0">{{ $title->blog_title }}</h4>
             </div>
         </div>
+
 
         <div class="row g-4 justify-content-center">
 
@@ -43,17 +44,17 @@
                 </div>
             </div>
             @endforeach
+            
 
 
-
-            <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
-                <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="#">Contact Chat With Us</a>
+           <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
+                <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="{{ route('contact') }}">Contact Chat With Us</a>
             </div>
         </div>
-
     </div>
 </div>
-<!-- About End -->
+<!-- Services End -->
+
 
 
 @endsection
