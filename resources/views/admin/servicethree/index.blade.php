@@ -25,7 +25,6 @@ Cloud Web HostingList
                             <thead>
                                 <tr>
                                     <th>Sl</th>
-                                    <th>Section Title</th>
                                     <th>Name</th>
                                     <th>Price</th>
                                     <th>VAT</th>
@@ -38,7 +37,6 @@ Cloud Web HostingList
                                 @foreach($data as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{$item->title }}</td>
                                     <td>{{$item->name }}</td>
                                     <td>{{$item->price}}</td>
                                     <td>{{$item->vat}}</td>

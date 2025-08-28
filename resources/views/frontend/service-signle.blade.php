@@ -10,17 +10,16 @@
     </div>
 </div>
 
-@if($service->title=='Web Design & Development Services')
+@if($service->title=='Website Design & Development')
 <div class="container-fluid about bg-light py-5">
     <div class="container py-5">
         <div class="row g-5 align-items-center pb-5">
 
             <div class="section-title mb-5 wow fadeInUp" data-wow-delay="0.2s">
                 <div class="sub-style">
-                    <h4 class="sub-title px-3 mb-0">🛠 Tools & Technologies</h4>
+                    <h4 class="sub-title px-3 mb-0">{{$title->tools_title}}</h4>
                 </div>
-                <p class="my-3">We use modern, reliable, and industry-standard tools to build secure, scalable,
-                    and high-performing websites and software solutions.</p>
+                <p class="my-3">{{$title->tools_description}}</p>
             </div>
 
         </div>
@@ -47,10 +46,9 @@
     <div class="container">
         <div class="section-title mb-5 wow fadeInUp" data-wow-delay="0.2s">
             <div class="sub-style">
-                <h4 class="sub-title px-3 mb-0">Our Process</h4>
+                <h4 class="sub-title px-3 mb-0">{{$title->ourprocess_title}}</h4>
             </div>
-            <p class="my-3">We specialize in building custom websites tailored to meet the unique needs of
-                businesses and individuals.</p>
+            <p class="my-3">{{$title->ourprocess_description}}</p>
         </div>
         <div class="row g-4 justify-content-center text-center">
             @foreach($process as $item)
@@ -73,10 +71,9 @@
 
             <div class="section-title mb-5 wow fadeInUp" data-wow-delay="0.2s">
                 <div class="sub-style">
-                    <h4 class="sub-title px-3 mb-0">Types of Websites We Build</h4>
+                    <h4 class="sub-title px-3 mb-0">{{$title->type_ofweb_title}}</h4>
                 </div>
-                <p class="my-3">We specialize in building custom websites tailored to meet the unique needs of
-                    businesses and individuals.</p>
+                <p class="my-3">{{$title->type_ofweb_description}}</p>
             </div>
 
         </div>
@@ -348,9 +345,9 @@
 
     <div class="section-title mb-5 wow fadeInUp" data-wow-delay="0.2s">
         <div class="sub-style">
-            <h4 class="sub-title px-3 mb-0 display-3">Package</h4>
+            <h4 class="sub-title px-3 mb-0 display-3">{{$title->package_title}}</h4>
         </div>
-        <p class="mt-3">Choose the Right Internet Plan – Speed, Stability &amp; Support That Fits Your Needs.</p>
+        <p class="mt-3">{{$title->package_description}}</p>
     </div>
 
     <div class="container">

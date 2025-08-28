@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('service_threes', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->longText('description')->nullable();
             $table->string('name')->nullable();
             $table->string('price')->nullable();
             $table->string('vat')->nullable();

@@ -37,15 +37,6 @@ Update Website Design Service
                                 </div>
 
 
-
-
-                                <!-- <div class="col-6 p-1 mb-3">
-                                    <label for="title" class="form-label">Section Title</label>
-                                    <input type="text" value="{{$data->title}}" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="Enter Title">
-                                    @error('title') <span class="text-danger">{{ $message }}</span> @enderror
-                                </div> -->
-
-
                                 <div class="col-6 p-1 mb-3">
                                     <label for="name" class="form-label">Name</label>
                                     <input type="text" value="{{$data->name}}" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Enter name">
@@ -64,21 +55,6 @@ Update Website Design Service
                                     <input type="number" value="{{$data->serial}}" name="serial" id="serial" class="form-control @error('serial') is-invalid @enderror" placeholder="Enter serial">
                                     @error('serial') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
-
-
-                                <!-- <div class="col-12 p-1 mb-3">
-                                    <label for="description" class="form-label"> Section Description</label>
-                                    <textarea name="description" id="description" rows="3" class="form-control @error('description') is-invalid @enderror" placeholder="Enter Description">{!! $data->description !!}</textarea>
-                                    @error('description') <span class="text-danger">{{ $message }}</span> @enderror
-                                </div>
-
-
-                                <div class="col-12 p-1 mb-3">
-                                    <label for="short_description" class="form-label"> Description</label>
-                                    <textarea name="short_description" id="short_description" rows="3" class="form-control @error('short_description') is-invalid @enderror" placeholder="Enter Short Description">{!! $data->short_description !!}</textarea>
-                                    @error('short_description') <span class="text-danger">{{ $message }}</span> @enderror
-                                </div> -->
-
 
 
                                 <div class="col-6 p-1 mb-3">

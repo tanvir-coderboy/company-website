@@ -28,6 +28,16 @@ return new class extends Migration
             $table->longText('contact_description')->nullable();
             $table->string('team_title')->nullable();
             $table->longText('team_description')->nullable();
+            $table->longText('web_design_title')->nullable();
+            $table->longText('web_design_description')->nullable();
+            $table->longText('tools_title')->nullable();
+            $table->longText('tools_description')->nullable();
+            $table->longText('ourprocess_title')->nullable();
+            $table->longText('ourprocess_description')->nullable();
+            $table->longText('type_ofweb_title')->nullable();
+            $table->longText('type_ofweb_description')->nullable();
+            $table->longText('package_title')->nullable();
+            $table->longText('package_description')->nullable();
             $table->timestamps();
         });
     }

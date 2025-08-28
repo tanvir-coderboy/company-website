@@ -25,11 +25,7 @@ Create Cloud Web Hosting
                         <div class="card-body">
                             <div class="row">
 
-                                <div class="col-6 p-1 mb-3">
-                                    <label for="title" class="form-label">Section Title</label>
-                                    <input type="text" name="title" id="title" placeholder="Enter section title" class="form-control @error('title') is-invalid @enderror">
-                                    @error('title') <span class="text-danger">{{ $message }}</span> @enderror
-                                </div>
+
 
                                 <div class="col-6 p-1 mb-3">
                                     <label for="name" class="form-label">Name</label>
@@ -37,19 +33,19 @@ Create Cloud Web Hosting
                                     @error('name') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
 
-                                <div class="col-4 p-1 mb-3">
+                                <div class="col-6 p-1 mb-3">
                                     <label for="price" class="form-label">Price</label>
                                     <input type="text" name="price" id="price" placeholder="Enter price" class="form-control @error('price') is-invalid @enderror">
                                     @error('price') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
 
-                                <div class="col-4 p-1 mb-3">
+                                <div class="col-6 p-1 mb-3">
                                     <label for="vat" class="form-label">VAT (%)</label>
                                     <input type="text" name="vat" id="vat" placeholder="Enter VAT percentage" class="form-control @error('vat') is-invalid @enderror">
                                     @error('vat') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
 
-                                <div class="col-4 p-1 mb-3">
+                                <div class="col-6 p-1 mb-3">
                                     <label for="duration" class="form-label">Duration</label>
                                     <input type="text" name="duration" id="duration" placeholder="Enter duration" class="form-control @error('duration') is-invalid @enderror">
                                     @error('duration') <span class="text-danger">{{ $message }}</span> @enderror
@@ -67,11 +63,7 @@ Create Cloud Web Hosting
                                     @error('serial') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
 
-                                <div class="col-12 p-1 mb-3">
-                                    <label for="description" class="form-label">Description</label>
-                                    <textarea name="description" id="description" placeholder="Enter description" class="form-control @error('description') is-invalid @enderror"></textarea>
-                                    @error('description') <span class="text-danger">{{ $message }}</span> @enderror
-                                </div>
+
 
                                 <div class="col-6 p-1 mb-3">
                                     <label for="list_1" class="form-label">List One</label>

@@ -24,10 +24,10 @@ class DatabaseSeeder extends Seeder
 
 
         // Create test user
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
 
         // Create Super Admin
         $admin = Admin::firstOrCreate(

@@ -67,7 +67,8 @@ class WebsiteController extends Controller
         $tools = ServiceOne::where('status',1)->where('service_type','Tools & Technologies')->get();
         $process = ServiceOne::where('status',1)->where('service_type','Our Process')->get();
         $webbuild = ServiceOne::where('status',1)->where('service_type','Types of Websites We Build')->get();
-        return view('frontend.service-signle', compact('service','tools','process','webbuild'));
+        $title = SectionTitle::first();
+        return view('frontend.service-signle', compact('service','tools','process','webbuild','title'));
     }
 
 

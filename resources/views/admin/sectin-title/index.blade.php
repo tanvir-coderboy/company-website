@@ -123,6 +123,81 @@ Section Title Update
                                 </div>
 
 
+                                <div class="col-lg-12 p-1 mb-3">
+                                    <label for="web_design_title" class="form-label">Web Design & Dev Title</label>
+                                    <input type="text" name="web_design_title" id="web_design_title" value="{{ $data->web_design_title }}" class="form-control @error('web_design_title') is-invalid @enderror">
+                                    @error('web_design_title') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+
+
+                                <div class="col-lg-12 p-1 mb-3">
+                                    <label for="web_design_description" class="form-label">Web Design & Dev Description</label>
+                                    <textarea name="web_design_description" id="web_design_description" rows="3" class="form-control @error('web_design_description') is-invalid @enderror">{{ $data->web_design_description }}</textarea>
+                                    @error('web_design_description') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+
+
+
+                                <div class="col-lg-12 p-1 mb-3">
+                                    <label for="tools_title" class="form-label">Tools & Technology Title</label>
+                                    <input type="text" name="tools_title" id="tools_title" value="{{ $data->tools_title }}" class="form-control @error('tools_title') is-invalid @enderror">
+                                    @error('tools_title') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+
+
+                                <div class="col-lg-12 p-1 mb-3">
+                                    <label for="tools_description" class="form-label">Tools & Technology Description</label>
+                                    <textarea name="tools_description" id="tools_description" rows="3" class="form-control @error('tools_description') is-invalid @enderror">{{ $data->tools_description }}</textarea>
+                                    @error('tools_description') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+
+
+
+                                <div class="col-lg-12 p-1 mb-3">
+                                    <label for="ourprocess_title" class="form-label">Our Process Title</label>
+                                    <input type="text" name="ourprocess_title" id="ourprocess_title" value="{{ $data->ourprocess_title }}" class="form-control @error('ourprocess_title') is-invalid @enderror">
+                                    @error('ourprocess_title') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+
+
+                                <div class="col-lg-12 p-1 mb-3">
+                                    <label for="ourprocess_description" class="form-label">Our Process Description</label>
+                                    <textarea name="ourprocess_description" id="ourprocess_description" rows="3" class="form-control @error('ourprocess_description') is-invalid @enderror">{{ $data->ourprocess_description }}</textarea>
+                                    @error('ourprocess_description') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+
+
+
+                                <div class="col-lg-12 p-1 mb-3">
+                                    <label for="type_ofweb_title" class="form-label">Type Of Website Title</label>
+                                    <input type="text" name="type_ofweb_title" id="type_ofweb_title" value="{{ $data->type_ofweb_title }}" class="form-control @error('type_ofweb_title') is-invalid @enderror">
+                                    @error('type_ofweb_title') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+
+
+                                <div class="col-lg-12 p-1 mb-3">
+                                    <label for="type_ofweb_description" class="form-label">Type Of Website Description</label>
+                                    <textarea name="type_ofweb_description" id="type_ofweb_description" rows="3" class="form-control @error('type_ofweb_description') is-invalid @enderror">{{ $data->type_ofweb_description }}</textarea>
+                                    @error('type_ofweb_description') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+
+
+
+                                <div class="col-lg-12 p-1 mb-3">
+                                    <label for="package_title" class="form-label">Package Title</label>
+                                    <input type="text" name="package_title" id="package_title" value="{{ $data->package_title }}" class="form-control @error('package_title') is-invalid @enderror">
+                                    @error('package_title') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+
+
+                                <div class="col-lg-12 p-1 mb-3">
+                                    <label for="package_description" class="form-label">Package Description</label>
+                                    <textarea name="package_description" id="package_description" rows="3" class="form-control @error('package_description') is-invalid @enderror">{{ $data->package_description }}</textarea>
+                                    @error('package_description') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+
+
+
                                 <div class="col-lg-12 form-group">
                                     <label for="chosse_image">Why Choose Image</label>
                                     <input value="{{$data->chosse_image}}" type="file" name="chosse_image" class="p-1 form-control @error('chosse_image') is-invalid @enderror" id="chosse_image">
